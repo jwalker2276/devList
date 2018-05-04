@@ -1,0 +1,158 @@
+:root {
+  --app-bkg-color: #d8dbe2;
+  --sidebar-bkg-color: #373f51;
+
+  --header-color: #58a4b0;
+  --items-color: #a9bcd0;
+
+  --light-font-color: var(--app-bkg-color);
+  --dark-font-color: #1b1b1eg;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--app-bkg-color);
+  color: var(--dark-font-color);
+  height: 100vh;
+  width: 100vw;
+}
+
+#main {
+  height: inherit;
+  width: inherit;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 1fr 25%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header header"
+    "sidebar lists user";
+}
+
+.header {
+  grid-area: header;
+  background-color: var(--header-color);
+  display: grid;
+  grid-template-areas: "brand info user";
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.header-left {
+  grid-area: brand;
+}
+
+.header-right {
+  grid-area: user;
+  justify-items: end;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  text-align: center;
+  background-color: var(--sidebar-bkg-color);
+}
+
+.sidebar-lists {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.sidebar-list-button {
+  width: 50%;
+  margin: 10px;
+}
+
+.lists-section {
+  grid-area: lists;
+}
+
+.list {
+  margin: 5px auto;
+  background-color: var(--header-color);
+}
+
+.list-title {
+  margin: 0;
+}
+
+.list-item {
+  margin: 5px;
+  display: grid;
+  grid-template-areas: "name cost voter";
+  grid-template-columns: 20% 10% 1fr;
+  background-color: var(--items-color);
+}
+
+.item-name {
+  grid-area: name;
+}
+
+.item-link {
+  grid-area: link;
+}
+
+.item-cost-symbol {
+  grid-area: cost;
+  justify-self: center;
+  align-self: center;
+  max-width: 25px;
+}
+
+.item-voter {
+  grid-area: voter;
+  display: grid;
+  grid-template-areas: "vote-up total-votes vote-down report";
+  grid-template-columns: 1fr auto 1fr 1fr;
+}
+
+.total-votes-span {
+  text-align: center;
+}
+
+.edit-btn {
+  min-width: 25px;
+  min-height: 25px;
+  background: url("/images/cog.svg") center / 25px 25px no-repeat;
+}
+
+.vote-btn {
+  height: 50px;
+  cursor: pointer;
+}
+
+.vote-btn:nth-of-type(1) {
+  background: url("/images/thumbs-up.svg") center / 25px 25px no-repeat;
+}
+.vote-btn:nth-of-type(2) {
+  background: url("/images/thumbs-down.svg") center / 25px 25px no-repeat;
+}
+
+.user {
+  grid-area: user;
+}
+
+.add-list-div {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.add-listitem-div {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+form {
+  margin: 10px 5px;
+}

@@ -1,0 +1,106 @@
+import React from "react";
+import Listitem from "./Listitem";
+
+// This component displays the lists and items from state
+
+class List extends React.Component {
+  render() {
+    // Get current listName and state.lists
+    const listName = this.props.selectedListName;
+    const lists = this.props.lists;
+
+    // Check to see if firebase is done syncing
+    if (!lists[listName]) {
+      return null; // return null to not display anything
+    }
+
+    // Setup info
+    const title = lists[listName].title;
+    const items = lists[listName].items;
+    const owner = lists[listName].owner;
+    const currentUser = this.props.userId;
+    // Flag to determine if current user is owner
+    let isOwner = false;
+
+    //Check for list owner
+    if (owner === currentUser) {
+      isOwner = true;
+    } else {
+      isOwner = false;
+    }
+
+    // Sort the items so components are displayed based on votes
+    let sortedItems = Object.values(items).sort((a, b) => b.rank - a.rank);
+
+    // Edit button snippet for owner
+    const editListBtn = (
+      <button
+        className="edit-btn"
+        onClick={() => this.props.flagListForEdit()}
+      />
+    );
+
+    // If owner is logged in
+    if (isOwner) {
+      // Check for an empty list
+      if (items === "") {
+        return (
+          <div className="list">
+            <h2 className="list-title">{title}</h2>
+            {editListBtn}
+          </div>
+        );
+      } else {
+        return (
+          <div className="list">
+            <h2 className="list-title">{title}</h2>
+            {editListBtn}
+            {/* Display the sorted items */}
+            {sortedItems.map((item, index) => (
+              <Listitem
+                key={item.objKey}
+                itemName={item.objKey}
+                listItemInfo={item}
+                listName={this.props.selectedListName}
+                itemInteraction={this.props.itemInteraction}
+                currentUser={this.props.userId}
+                flagItemForEdit={this.props.flagItemForEdit}
+                userVoteCount={this.props.userVoteCount}
+              />
+            ))}
+          </div>
+        );
+      }
+    } else {
+      // Check for an empty list
+      if (items === "") {
+        return (
+          <div className="list">
+            <h2 className="list-title">{title}</h2>
+          </div>
+        );
+      } else {
+        return (
+          <div className="list">
+            <h2 className="list-title">{title}</h2>
+            {/* Display the sorted items */}
+            {sortedItems.map((item, index) => (
+              <Listitem
+                key={item.objKey}
+                itemName={item.objKey}
+                listItemInfo={item}
+                listName={this.props.selectedListName}
+                itemInteraction={this.props.itemInteraction}
+                currentUser={this.props.userId}
+                flagItemForEdit={this.props.flagItemForEdit}
+                userVoteCount={this.props.userVoteCount}
+              />
+            ))}
+          </div>
+        );
+      }
+    }
+  }
+}
+
+export default List;

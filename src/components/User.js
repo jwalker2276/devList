@@ -44,7 +44,6 @@ class User extends React.Component {
         // Check if the user voted
         // -1 is the intital value on page load
         if (appVoteCount !== -1) {
-          console.log("user just voted");
           // Ok user just voted
           // Lets find which index to change
           // Then lets change it
@@ -53,7 +52,6 @@ class User extends React.Component {
 
         // Update the db
         this.updateVotesInDatabase();
-        console.log("updated db");
       }
     }
   }
@@ -179,34 +177,56 @@ class User extends React.Component {
   // This method updates the users votesCount from the datebase to app's state.
   syncVotesToApp = userId => {
     // First check on vote count
-    //this.determineVotesForUser(userId);
+    this.determineVotesForUser(userId);
 
     // Get votes stored in users.state and sync with app.js
     this.props.updateVotes("sync", this.state.users[userId].votesLeft);
   };
 
-  // Check votes count
+  // The method check the users voteTimesArray and determines
+  // whether a required time has passed for new votes to be givin out.
+  // Method is call from synVotesToApp
   determineVotesForUser = userId => {
-    // 1. Check voteTimes array for times greater then 24 hours in milliseconds
-
     // Array of times when user last voted.
     const userVoteTimesArr = this.state.users[userId].voteTimes;
 
     // Looping through times array
-    userVoteTimesArr.forEach((time, idx) => {
-      // Current time
-      const currentTime = Date.now();
+    userVoteTimesArr.forEach((loggedTime, idx) => {
+      // Current time in seconds
+      const currentTime = Math.floor(Date.now() / 1000);
       // Min time required
-      const minTimeRequired = 0;
-      //
-      if (time !== 0) {
-        console.log("checking if greater than 24 hours");
-      } else {
-        console.log("hasn't voted yet");
+      const minTimeRequired = 86400; // 24 hours in seconds;
+      // Check if the user has even voted yet.
+      // The loggedTime will store a 0 when user hasn't used vote.
+      if (loggedTime !== 0) {
+        const difference = loggedTime - currentTime;
+        // If time limit has been met
+        if (difference > minTimeRequired) {
+          this.addVotes(idx, userId);
+        }
       }
     });
 
     // 2. Update votesLeft for current user
+  };
+
+  // The method is a helper method for determineVotesForUser.
+  // It updates this.state users.
+  // It changes voteTimes and votesLeft
+  addVotes = (index, userId) => {
+    // First copy users state
+    const users = { ...this.state.users };
+
+    // Update the voteTimes array with a 0
+    users[userId].voteTimes[index] = 0;
+    // Update the votesLeft value with a new vote
+    users[userId].votesLeft += 1;
+
+    // Merge state
+    this.setState({ users: users });
+
+    // Update the change index too
+    this.changeTimeIndex();
   };
 
   // Update votes in datebase
@@ -227,8 +247,6 @@ class User extends React.Component {
 
       // Set state
       this.setState({ users: users });
-
-      console.log("updating vote count in db");
     }
   };
 
@@ -240,13 +258,14 @@ class User extends React.Component {
     // Determine which time to change
     const timeIndexToChange = this.state.users[currentUserKey]
       .voteTimeIndexToChange;
-    console.log("updating vote time at index " + timeIndexToChange);
 
     // Copy users state
     const users = { ...this.state.users };
 
-    // Update voteTimes index with new time
-    users[currentUserKey].voteTimes[timeIndexToChange] = Date.now();
+    // Update voteTimes index with new time in seconds
+    users[currentUserKey].voteTimes[timeIndexToChange] = Math.floor(
+      Date.now() / 1000
+    );
 
     // Set state
     this.setState({ users: users });
@@ -307,7 +326,6 @@ class User extends React.Component {
     if (this.props.editItemFlag != null) {
       // Get key for editItem
       const itemKey = this.props.editItemFlag;
-      console.log("edititemflag is " + itemKey);
       return (
         <EditItem
           selectedList={this.props.state.user.selectedList}

@@ -25,7 +25,6 @@ class EditItem extends React.Component {
 
     // Get the selected item to edit
     const selectedListItem = lists[listKey].items[itemKey];
-    console.log(selectedListItem);
     return (
       <div className="editForm">
         <p className="edit-form-header">Change item info</p>

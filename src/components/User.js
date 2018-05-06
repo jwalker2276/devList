@@ -13,7 +13,8 @@ class User extends React.Component {
   state = {
     owner: null,
     users: {},
-    currentUserKey: null
+    currentUserKey: null,
+    lastVoteCount: 0
   };
 
   //********************
@@ -27,12 +28,27 @@ class User extends React.Component {
       context: this,
       state: "users"
     });
+
+    // Lets update lastVoteCount to watch for voting
+    const voteCount = this.props.userVotes;
+
+    // Updating state
+    this.setState({ lastVoteCount: voteCount });
   }
 
-  // Check for change
+  // Lets check for changes
   componentDidUpdate() {
-    // Something changed, check if user voted.
-    this.updateVotesInDatabase();
+    // Did the user vote?
+    const appVoteCount = this.props.userVotes;
+
+    if (appVoteCount !== this.state.lastVoteCount) {
+      console.log("Uh oh, vote counts are out of sync");
+      // Update the db
+      this.updateVotesInDatabase();
+      // Update lastVoteCount to current value
+      // So when we check next time it was updated here
+      this.setState({ lastVoteCount: appVoteCount });
+    }
   }
 
   // Called when unmounted
@@ -99,10 +115,11 @@ class User extends React.Component {
       const newUserKey = Date.now();
       // New user, update key for syncVotes
       userKey = newUserKey;
-      // New user object to store
+      // New user object
       storedUsers[newUserKey] = {
         id: userId,
         voteTimes: [0, 0, 0],
+        voteTimeIndexToChange: 0,
         votesLeft: 3,
         uKey: newUserKey
       };
@@ -111,47 +128,35 @@ class User extends React.Component {
     // Set state
     this.setState({ users: storedUsers });
 
-    // Call sync votes
-    this.syncVotesToApp(userKey);
-
     // Set current user key in state
     this.setCurrentUserKey(userKey);
+
+    // Update app's local state with votesCount from database.
+    this.syncVotesToApp(userKey);
   };
 
-  // Check votes count
-  determineVotesForUser = userId => {
-    // 1. Check voteTimes array for times greater then 24 hours in milliseconds
-
-    // Array of times when user last voted.
-    const userVoteTimesArr = this.state.users[userId].voteTimes;
-
-    // Looping through times array
-    userVoteTimesArr.forEach((ele, idx) => {
-      // Current time
-      const currentTime = Date.now();
-      // Min time required
-      const minTimeRequired = 0;
-      //
-      if (ele !== 0) {
-        console.log("checking if greater than 24 hours");
-      } else {
-        console.log("hasn't voted yet");
-      }
+  // Method to logout the user
+  logout = () => {
+    // Set the owner key back to null
+    this.setState({
+      owner: null
     });
 
-    // 2. Update votesLeft for current user
+    // Update currentUserKey to null
+    this.setCurrentUserKey(null);
+
+    // Update state in app
+    this.props.setUserId(null);
   };
 
-  // Sync votes
-  syncVotesToApp = userId => {
-    // First check on vote vote count
-    this.determineVotesForUser(userId);
-
-    // Get votes stored in users.state and sync with app.js
-    this.props.updateVotes("sync", this.state.users[userId].votesLeft);
-  };
+  //*****************************
+  // User methods
+  //*****************************
 
   // Set currentUserKey
+  // This method is call when logging in and out
+  // This method updates the current userkey value for use
+  // in other methods.
   setCurrentUserKey = userKey => {
     // Copy current value in state
     let currentUser = this.state.currentUserKey;
@@ -163,7 +168,42 @@ class User extends React.Component {
     this.setState({ currentUserKey: currentUser });
   };
 
+  // Sync votes
+  // This method updates the users votesCount from the datebase to app's state.
+  syncVotesToApp = userId => {
+    // First check on vote count
+    this.determineVotesForUser(userId);
+
+    // Get votes stored in users.state and sync with app.js
+    this.props.updateVotes("sync", this.state.users[userId].votesLeft);
+  };
+
+  // Check votes count
+  determineVotesForUser = userId => {
+    // 1. Check voteTimes array for times greater then 24 hours in milliseconds
+
+    // Array of times when user last voted.
+    const userVoteTimesArr = this.state.users[userId].voteTimes;
+
+    // Looping through times array
+    userVoteTimesArr.forEach((time, idx) => {
+      // Current time
+      const currentTime = Date.now();
+      // Min time required
+      const minTimeRequired = 0;
+      //
+      if (time !== 0) {
+        console.log("checking if greater than 24 hours");
+      } else {
+        console.log("hasn't voted yet");
+      }
+    });
+
+    // 2. Update votesLeft for current user
+  };
+
   // Update votes in datebase
+  // This method takes userVotes prop from app
   updateVotesInDatabase = () => {
     // Make sure votes does not equal -1.
     const { userVotes } = this.props;
@@ -180,21 +220,29 @@ class User extends React.Component {
 
       // Set state
       this.setState({ users: users });
+
+      console.log("updating vote count in db");
     }
   };
 
-  // Method to logout the user
-  logout = () => {
-    // Set the owner key back to null
-    this.setState({
-      owner: null
-    });
+  // Log the time of vote
+  logVoteTimeInDatabase = () => {
+    // Current user
+    const currentUserKey = this.state.currentUserKey;
 
-    // Update currentUserKey to null
-    this.setCurrentUserKey(null);
+    // Determine which time to change
+    const timeIndexToChange = this.state.users[currentUserKey]
+      .voteTimeIndexToChange;
+    console.log("updating vote time at index " + timeIndexToChange);
 
-    // Update state in app
-    this.props.setUserId(null);
+    // Copy users state
+    const users = { ...this.state.users };
+
+    // Update voteTimes index with new time
+    users[currentUserKey].voteTimes[timeIndexToChange] = Date.now();
+
+    // Set state
+    this.setState({ users: users });
   };
 
   render() {

@@ -7,14 +7,11 @@ import base, { firebaseApp } from "../base";
 import Editlist from "./Editlist";
 import EditItem from "./EditItem";
 
-// This component houses user interaction elements.
-
 class User extends React.Component {
   state = {
     owner: null,
     users: {},
-    currentUserKey: null,
-    lastVoteCount: 0
+    currentUserKey: null
   };
 
   //********************
@@ -28,26 +25,36 @@ class User extends React.Component {
       context: this,
       state: "users"
     });
-
-    // Lets update lastVoteCount to watch for voting
-    const voteCount = this.props.userVotes;
-
-    // Updating state
-    this.setState({ lastVoteCount: voteCount });
   }
 
   // Lets check for changes
   componentDidUpdate() {
-    // Did the user vote?
+    // Prop from app.js
     const appVoteCount = this.props.userVotes;
 
-    if (appVoteCount !== this.state.lastVoteCount) {
-      console.log("Uh oh, vote counts are out of sync");
-      // Update the db
-      this.updateVotesInDatabase();
-      // Update lastVoteCount to current value
-      // So when we check next time it was updated here
-      this.setState({ lastVoteCount: appVoteCount });
+    // Make sure the user is logged in with a valid key
+    if (this.state.currentUserKey !== null) {
+      // User.js local state and db data
+      const userVoteCount = this.state.users[this.state.currentUserKey]
+        .votesLeft;
+
+      // Is the data between app.js and user.js in sync?
+      // Is prop userVotes different from whats stored in db and user state?
+      if (appVoteCount !== userVoteCount) {
+        // Check if the user voted
+        // -1 is the intital value on page load
+        if (appVoteCount !== -1) {
+          console.log("user just voted");
+          // Ok user just voted
+          // Lets find which index to change
+          // Then lets change it
+          this.logVoteTimeInDatabase();
+        }
+
+        // Update the db
+        this.updateVotesInDatabase();
+        console.log("updated db");
+      }
     }
   }
 
@@ -172,7 +179,7 @@ class User extends React.Component {
   // This method updates the users votesCount from the datebase to app's state.
   syncVotesToApp = userId => {
     // First check on vote count
-    this.determineVotesForUser(userId);
+    //this.determineVotesForUser(userId);
 
     // Get votes stored in users.state and sync with app.js
     this.props.updateVotes("sync", this.state.users[userId].votesLeft);
@@ -242,6 +249,36 @@ class User extends React.Component {
     users[currentUserKey].voteTimes[timeIndexToChange] = Date.now();
 
     // Set state
+    this.setState({ users: users });
+
+    // Now let move to the next index for next time.
+    this.changeTimeIndex();
+  };
+
+  // This method is call after logging a time in the current index.
+  // It will update state with next index to change when the user votes again.
+  changeTimeIndex = () => {
+    // The index I track of the current user.
+    let index = this.state.users[this.state.currentUserKey]
+      .voteTimeIndexToChange;
+    const timesArrayLength = this.state.users[this.state.currentUserKey]
+      .voteTimes.length;
+
+    // Copy current state
+    const users = { ...this.state.users };
+
+    // Change the index in the current users object.
+
+    // If index is not at the end of the array, array.length -1, add 1 to the index
+    if (index !== timesArrayLength - 1) {
+      // Up the value by 1.
+      users[this.state.currentUserKey].voteTimeIndexToChange += 1;
+    } else {
+      // Set the index to the start of the array.
+      users[this.state.currentUserKey].voteTimeIndexToChange = 0;
+    }
+
+    // No update state
     this.setState({ users: users });
   };
 

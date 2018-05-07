@@ -208,15 +208,15 @@ class User extends React.Component {
       // Check if the user has even voted yet.
       // The loggedTime will store a 0 when user hasn't used vote.
       if (loggedTime !== 0) {
-        const difference = loggedTime - currentTime;
+        const difference = currentTime - loggedTime;
+        console.log(currentTime + " - " + loggedTime + " = " + difference);
         // If time limit has been met
         if (difference > minTimeRequired) {
           this.addVotes(idx, userId);
+          console.log("adding new vote");
         }
       }
     });
-
-    // 2. Update votesLeft for current user
   };
 
   // The method is a helper method for determineVotesForUser.

@@ -54,6 +54,14 @@ class User extends React.Component {
         this.updateVotesInDatabase();
       }
     }
+
+    // Lets check for a reported Item
+    // Watching reportedItem prop from app.js
+    // If no item is reported the value will be null
+    if (this.props.reportedItem !== null) {
+      // Log this item in current user reported array
+      this.addItemToReported(this.props.reportedItem);
+    }
   }
 
   // Called when unmounted
@@ -126,7 +134,8 @@ class User extends React.Component {
         voteTimes: [0, 0, 0],
         voteTimeIndexToChange: 0,
         votesLeft: 3,
-        uKey: newUserKey
+        uKey: newUserKey,
+        reportedItems: [-1]
       };
     }
 
@@ -274,7 +283,7 @@ class User extends React.Component {
     this.changeTimeIndex();
   };
 
-  // This method is call after logging a time in the current index.
+  // This method is called after logging a time in the current index.
   // It will update state with next index to change when the user votes again.
   changeTimeIndex = () => {
     // The index I track of the current user.
@@ -299,6 +308,16 @@ class User extends React.Component {
 
     // No update state
     this.setState({ users: users });
+  };
+
+  // This method is called from within componentDidUpdate
+  // This method logs the passed item and adds it to the user's reportedItems array.
+  addItemToReported = item => {
+    // Adding to array
+    console.log("logging " + item);
+
+    // Done logging the item, now reset it back in app.js
+    this.props.resetReportedItem();
   };
 
   render() {

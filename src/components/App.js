@@ -12,6 +12,7 @@ class App extends React.Component {
   state = {
     lists: {},
     user: {
+      lastSelectedList: null,
       selectedList: null,
       uid: null,
       votes: -1
@@ -19,7 +20,8 @@ class App extends React.Component {
     maxReportedTimes: 3,
     initialVotes: 3,
     editListFlag: false,
-    editItemFlag: null
+    editItemFlag: null,
+    reportedItem: null
   };
 
   //********************
@@ -50,6 +52,17 @@ class App extends React.Component {
       "selectedList",
       JSON.stringify(this.state.user.selectedList)
     );
+
+    // Check to see if user logged out.
+    // This is done by checking the user.uid for a null condition.
+    if (this.state.user.uid === null && this.state.user.votes !== -1) {
+      // Copy the current user state
+      const user = { ...this.state.user };
+      // Set the votes back to the initial state
+      user.votes = -1;
+      // Merge state
+      this.setState({ user: user });
+    }
   }
 
   // Called when unmounted
@@ -140,18 +153,57 @@ class App extends React.Component {
     this.setState({ lists: updatedLists });
   };
 
-  // Onclick method for sidebar buttons
+  // This method take in a list name and set state to the list name.
+  // It is called from the sidebaritem.js component.
   loadSelectedList = listName => {
     // Take a copy of current user state
     let user = { ...this.state.user };
 
+    // Check to see if any list is selected
+    // Checking for initial load
+    if (this.state.user.lastSelectedList === null) {
+      user.lastSelectedList = listName;
+    } else {
+      // Store the last selected list
+      // This is needed in addToViewCount().
+      const lastList = this.state.user.selectedList;
+      user.lastSelectedList = lastList;
+    }
+
     // Update selected list;
     user.selectedList = listName;
-
     // Set state
     this.setState({
       user: user
     });
+
+    // Add to view count
+    this.addToViewCount(listName);
+  };
+
+  // Onclick method for sidebar buttons
+  addToViewCount = listName => {
+    // Check to see if this list is already selected
+    // This is needed to prevent adding to view count of
+    // a list if its already selected.
+
+    // So only if the list is not already selected or no list is selected
+    if (
+      this.state.user.lastSelectedList !== this.state.user.selectedList ||
+      this.state.user.lastSelectedList === null
+    ) {
+      // Take a copy of current selectedList state
+      const lists = { ...this.state.lists };
+
+      // Add one to view count of this list
+      lists[listName].views++;
+
+      // Set state
+      this.setState({
+        lists: lists
+      });
+    } else {
+    }
   };
 
   // Method to set current users id in state
@@ -165,21 +217,6 @@ class App extends React.Component {
     // Set state
     this.setState({
       user: user
-    });
-  };
-
-  // Onclick method for sidebar buttons
-  addToViewCount = listName => {
-    // Take a copy of current selectedList state
-    //const lists = { ...this.state.lists };
-    const lists = { ...this.state.lists };
-
-    // Add one to view count of this list
-    lists[listName].views++;
-
-    // Set state
-    this.setState({
-      lists: lists
     });
   };
 
@@ -210,9 +247,13 @@ class App extends React.Component {
       // Change vote count
       this.updateVotes("decrease");
     } else if (eventName === "report") {
-      lists[listName].items[formatedItemName].timesReported += 1;
+      const item = lists[listName].items[formatedItemName];
+
+      item.timesReported += 1;
       // Set reported flag to true
       reportedFlag = true;
+      // Pass reported info to user.js to log on the current user.
+      this.setState({ reportedItem: item.objKey });
     }
 
     // Set state to new info
@@ -254,6 +295,12 @@ class App extends React.Component {
       // Set state to updated lists
       this.setState({ lists: lists });
     }
+  };
+
+  // Utility method to change state back to null after item was shared with user.js.
+  resetReportedItem = () => {
+    // Reset state back to null.
+    this.setState({ reportedItem: null });
   };
 
   //Update current users info from user component
@@ -367,6 +414,8 @@ class App extends React.Component {
           flagItemForEdit={this.flagItemForEdit}
           updateVotes={this.updateVotes}
           userVotes={this.state.user.votes}
+          reportedItem={this.state.reportedItem}
+          resetReportedItem={this.resetReportedItem}
         />
       </div>
     );

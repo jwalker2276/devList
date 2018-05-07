@@ -5,8 +5,8 @@ import React from "react";
 class Sidebaritem extends React.Component {
   // Event method for button clicks.
   handleClick = () => {
-    this.props.addToViewCount(this.props.listKey);
     this.props.loadSelectedList(this.props.listKey);
+    // this.props.addToViewCount(this.props.listKey);
   };
 
   render() {

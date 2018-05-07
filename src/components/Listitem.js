@@ -10,6 +10,8 @@ class Listitem extends React.Component {
     // Call method on app.js
     // event.target.name is vote-up, vote-down, or report
     this.props.itemInteraction(event.target.name, itemName, listName);
+    // Call method on user.js
+    // Need to log what item was reported
   };
 
   render() {
@@ -80,10 +82,11 @@ class Listitem extends React.Component {
           onClick={this.handleClick}
           className="vote-btn"
         />
-        <button name="report" onClick={this.handleClick} className="vote-btn">
+        {/* Disabled reporting for now */}
+        {/* <button name="report" onClick={this.handleClick} className="vote-btn">
           report
           {`${name}`}
-        </button>
+        </button> */}
       </div>
     );
 

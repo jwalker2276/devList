@@ -12,8 +12,6 @@ class EditItem extends React.Component {
   };
 
   render() {
-    //Need listkey, itemkey, list object
-
     const itemKey = this.props.itemKey;
     const listKey = this.props.selectedList;
     const lists = this.props.lists;

@@ -268,33 +268,34 @@ class App extends React.Component {
 
   // Utility Method to check reported list item and change state
   reportItem = listItem => {
-    // The value of timesReported in a listitem
-    const count = listItem.timesReported;
-    // The parent object
-    const listKey = listItem.parentListKey;
-    // The key name of the listitem
-    const listItemKey = formatName(listItem.name);
+    // // The value of timesReported in a listitem
+    // const count = listItem.timesReported;
+    // // The parent object
+    // const listKey = listItem.parentListKey;
+    // // The key name of the listitem
+    // const listItemKey = formatName(listItem.name);
 
-    // If count is over the limit
-    if (count >= this.state.maxReportedTimes) {
-      // Copy current state of lists
-      const lists = { ...this.state.lists };
+    // // If count is over the limit
+    // if (count >= this.state.maxReportedTimes) {
+    //   // Copy current state of lists
+    //   const lists = { ...this.state.lists };
 
-      // Keys in lists.listNum.items
-      const numOfKeys = Object.keys(lists[listKey].items).length;
+    //   // Keys in lists.listNum.items
+    //   const numOfKeys = Object.keys(lists[listKey].items).length;
 
-      //Check the length of items before we remove from state
-      if (numOfKeys > 1) {
-        // Delete the listitem
-        lists[listKey].items[listItemKey] = null;
-      } else {
-        // Delete the list itself
-        lists[listKey] = null;
-      }
+    //   //Check the length of items before we remove from state
+    //   if (numOfKeys > 1) {
+    //     // Delete the listitem
+    //     lists[listKey].items[listItemKey] = null;
+    //   } else {
+    //     // Delete the list itself
+    //     lists[listKey] = null;
+    //   }
 
-      // Set state to updated lists
-      this.setState({ lists: lists });
-    }
+    //   // Set state to updated lists
+    //   this.setState({ lists: lists });
+    // }
+    console.log("reported " + listItem);
   };
 
   // Utility method to change state back to null after item was shared with user.js.

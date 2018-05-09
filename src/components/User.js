@@ -209,6 +209,7 @@ class User extends React.Component {
       // The loggedTime will store a 0 when user hasn't used vote.
       if (loggedTime !== 0) {
         const difference = currentTime - loggedTime;
+        console.log(currentTime + " - " + loggedTime + " = " + difference);
         // If time limit has been met
         if (difference > minTimeRequired) {
           this.addVotes(idx, userId);

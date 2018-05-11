@@ -325,6 +325,11 @@ class App extends React.Component {
     this.setState({ user: userInfo });
   };
 
+  // The method receives a command from buttons within the header.
+  headerCommands = command => {
+    console.log("from app. Received command = " + command);
+  };
+
   //*****************************
   // Sorting and finding methods
   //*****************************
@@ -383,6 +388,7 @@ class App extends React.Component {
         <Header
           userId={this.state.user.uid}
           userVotes={this.state.user.votes}
+          headerCommands={this.headerCommands}
         />
         <Sidebar
           newestList={this.findNewestList()}

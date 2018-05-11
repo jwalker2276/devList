@@ -2,7 +2,7 @@
   --app-bkg-color: #d8dbe2;
   --sidebar-bkg-color: #373f51;
 
-  --header-color: #58a4b0;
+  --header-color: #373f51;
   --items-color: #a9bcd0;
 
   --light-font-color: var(--app-bkg-color);
@@ -31,29 +31,37 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 25% 1fr 25%;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 20% 1fr 30%;
+  grid-template-rows: 4% 1fr;
   grid-template-areas:
     "header header header"
     "sidebar lists user";
 }
 
-.header {
+/* Header styles */
+.header-section {
   grid-area: header;
   background-color: var(--header-color);
   display: grid;
-  grid-template-areas: "brand info user";
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "logo messages user";
+  grid-template-columns: 1fr 40% 1fr;
 }
 
-.header-left {
-  grid-area: brand;
+.header-logo {
+  grid-area: logo;
+  max-width: 50px;
 }
 
-.header-right {
+.header-messages {
+  grid-area: messages;
+}
+
+.header-user {
   grid-area: user;
   justify-items: end;
 }
+
+/* End of Header styles */
 
 .sidebar {
   grid-area: sidebar;

@@ -1,6 +1,20 @@
 import React from "react";
 
 class Header extends React.Component {
+  // Header component contains:
+  // Logo
+  // Message Area
+  // Add Button
+  // Login / Logout Button
+  // Info Button
+
+  // Messages
+  // If not logged in "log in to add something everyone needs to know about."
+  // Hide add button if not logged in
+
+  // If logged in show the add something new button.
+  // Display vote info "You can vote on # number of items".
+
   render() {
     let isLoggedIn = false;
     let hasVotes = false;
@@ -10,6 +24,26 @@ class Header extends React.Component {
       isLoggedIn = true;
     }
 
+    // This group of buttons consist of "Add, Logout/Login, Info".
+    const buttonGroup = isLoggedIn ? (
+      <div className="header-user">
+        <button onClick={() => this.props.headerCommands("add")}>
+          Add something new
+        </button>
+        <button onClick={() => this.props.headerCommands("logout")}>
+          Logout
+        </button>
+        <button onClick={() => this.props.headerCommands("info")}>Info</button>
+      </div>
+    ) : (
+      <div className="header-user">
+        <button onClick={() => this.props.headerCommands("login")}>
+          Login
+        </button>
+        <button onClick={() => this.props.headerCommands("info")}>Info</button>
+      </div>
+    );
+
     // Check if user has votes left
     if (this.props.userVotes > 0) {
       hasVotes = true;
@@ -17,27 +51,18 @@ class Header extends React.Component {
 
     // Vote info templete
     const votesInfo = hasVotes ? (
-      <p>Votes Left {this.props.userVotes}</p>
+      <p>You can vote on {this.props.userVotes} items right now.</p>
     ) : isLoggedIn ? (
       <p>Check back tomorrow to vote again.</p>
     ) : (
-      <p />
-    );
-
-    // User info templete
-    const logInOutBtn = isLoggedIn ? (
-      <button className="log-in-out">Logout</button>
-    ) : (
-      <button className="log-in-out">Login</button>
+      <p>Log in to add something everyone needs to know about.</p>
     );
 
     return (
-      <header className="header">
-        <div className="header-left">
-          <h1>Dev List</h1>
-        </div>
-        <div className="header-center">{votesInfo}</div>
-        <div className="header-right">{logInOutBtn}</div>
+      <header className="header-section">
+        <img className="header-logo" src="../images/code.svg" alt="logo" />
+        <div className="header-messages">{votesInfo}</div>
+        {buttonGroup}
       </header>
     );
   }

@@ -11,7 +11,8 @@ class User extends React.Component {
   state = {
     owner: null,
     users: {},
-    currentUserKey: null
+    currentUserKey: null,
+    userStatus: "loggedOut"
   };
 
   //********************
@@ -54,6 +55,15 @@ class User extends React.Component {
         this.updateVotesInDatabase();
       }
     }
+
+    // if the userpanel is closed and the userStatus is loggedIn
+    // logout
+
+    //Need to check the user panel status as prop
+    // Pass the status of the panel, opened or closed to user
+    //
+
+    // Stopped here
 
     // Lets check for a reported Item
     // Watching reportedItem prop from app.js
@@ -147,6 +157,9 @@ class User extends React.Component {
 
     // Update app's local state with votesCount from database.
     this.syncVotesToApp(userKey);
+
+    // Change state to loggedIn
+    this.setState({ userStatus: "loggedIn" });
   };
 
   // Method to logout the user
@@ -161,6 +174,14 @@ class User extends React.Component {
 
     // Update state in app
     this.props.setUserId(null);
+
+    // Change state to loggedOut
+    this.setState({
+      userStatus: "loggedOut"
+    });
+
+    // Close the user panel
+    this.props.uiCommands("closeUserPanel");
   };
 
   //*****************************
@@ -357,8 +378,7 @@ class User extends React.Component {
 
     // If logged in show features
     return (
-      <section className="user">
-        {logout}
+      <section className="user-section">
         <Addlist addList={this.props.addList} userId={this.state.owner} />
         <Addlistitem
           state={this.props.state}

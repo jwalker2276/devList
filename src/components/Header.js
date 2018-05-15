@@ -27,20 +27,20 @@ class Header extends React.Component {
     // This group of buttons consist of "Add, Logout/Login, Info".
     const buttonGroup = isLoggedIn ? (
       <div className="header-user">
-        <button onClick={() => this.props.headerCommands("add")}>
+        <button onClick={() => this.props.uiCommands("add")}>
           Add something new
         </button>
-        <button onClick={() => this.props.headerCommands("logout")}>
+        <button onClick={() => this.props.uiCommands("closeUserPanel")}>
           Logout
         </button>
-        <button onClick={() => this.props.headerCommands("info")}>Info</button>
+        <button onClick={() => this.props.uiCommands("info")}>Info</button>
       </div>
     ) : (
       <div className="header-user">
-        <button onClick={() => this.props.headerCommands("login")}>
+        <button onClick={() => this.props.uiCommands("openUserPanel")}>
           Login
         </button>
-        <button onClick={() => this.props.headerCommands("info")}>Info</button>
+        <button onClick={() => this.props.uiCommands("info")}>Info</button>
       </div>
     );
 

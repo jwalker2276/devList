@@ -21,7 +21,8 @@ class App extends React.Component {
     initialVotes: 3,
     editListFlag: false,
     editItemFlag: null,
-    reportedItem: null
+    reportedItem: null,
+    appClasses: "app"
   };
 
   //********************
@@ -47,6 +48,7 @@ class App extends React.Component {
   // Lifecycle method
   // Checking for change
   componentDidUpdate() {
+    console.log("component did update");
     //Update local storage
     localStorage.setItem(
       "selectedList",
@@ -326,8 +328,19 @@ class App extends React.Component {
   };
 
   // The method receives a command from buttons within the header.
-  headerCommands = command => {
+  uiCommands = command => {
     console.log("from app. Received command = " + command);
+
+    const userPanelClosed = "app";
+    const userPanelOpened = "app-user-opened";
+
+    if (command === "openUserPanel") {
+      this.setState({ appClasses: userPanelOpened });
+    }
+
+    if (command === "closeUserPanel") {
+      this.setState({ appClasses: userPanelClosed });
+    }
   };
 
   //*****************************
@@ -384,11 +397,11 @@ class App extends React.Component {
   // React render
   render() {
     return (
-      <div className="app">
+      <div className={this.state.appClasses}>
         <Header
           userId={this.state.user.uid}
           userVotes={this.state.user.votes}
-          headerCommands={this.headerCommands}
+          uiCommands={this.uiCommands}
         />
         <Sidebar
           newestList={this.findNewestList()}
@@ -423,6 +436,7 @@ class App extends React.Component {
           userVotes={this.state.user.votes}
           reportedItem={this.state.reportedItem}
           resetReportedItem={this.resetReportedItem}
+          uiCommands={this.uiCommands}
         />
       </div>
     );

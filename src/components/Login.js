@@ -3,7 +3,7 @@ import React from "react";
 class Login extends React.Component {
   render() {
     return (
-      <div className="login-wrapper">
+      <section className="user-section">
         <button
           className="btn-login-github"
           onClick={() => this.props.authenticate("Github")}
@@ -16,7 +16,7 @@ class Login extends React.Component {
         >
           Login with Facebook
         </button>
-      </div>
+      </section>
     );
   }
 }

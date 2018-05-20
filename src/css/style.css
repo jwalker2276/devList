@@ -145,6 +145,12 @@ p {
   grid-template-columns: 5% 1fr;
 }
 
+.list-number {
+  color: var(--font-text-light);
+  grid-column: 1 / 1;
+  text-align: center;
+}
+
 /* End of list styles */
 
 /* Item styles */
@@ -194,9 +200,8 @@ p {
   color: var(--font-string);
 }
 
-.item-cost-symbol {
-  max-width: 25px;
-  color: white;
+.item-number {
+  color: var(--font-important);
 }
 
 .item-voter {

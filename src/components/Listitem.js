@@ -1,4 +1,11 @@
 import React from "react";
+// import Number from "./Number";
+import ItemTitle from "./ItemTitle";
+import ItemLink from "./ItemLink";
+import ItemCost from "./ItemCost";
+import ItemVotes from "./ItemVotes";
+import { EditItemButton } from "./EditButton";
+import { Comment, CommentEnd, ClosingBracket } from "./ItemSyntax";
 import { getCostSymbol } from "../helper-functions";
 
 // This component displays the a list item in a list
@@ -46,58 +53,6 @@ class Listitem extends React.Component {
       canVote = false;
     }
 
-    // Comment snippet
-    const comment = (
-      <p className="item-comment">// Item</p>
-    );
-
-    const commentEnd = (
-      <p className="item-comment">// -----------------------------</p>
-    );
-
-    // Link for item
-    const itemTitle = (
-      <p className="item-class">class <span className="item-title">{`${name}`}</span> <span className="item-text">&#123;</span></p>
-    );
-
-    // Edit button snippet for owner
-    const editBtn = (
-      <button
-        className="edit-btn"
-        onClick={() => this.props.flagItemForEdit(objKey)}
-      />
-    );
-
-    // Title for item
-    const itemLink = (
-      <p className="item-text item-indent"><span className="item-this">this</span><span className="item-period">.</span>link<span className="item-equal"> = </span><span className="item-string">"</span><a className="item-link" href={`${link}`}>{`${link}`}</a><span className="item-string">"</span>&#59;</p>
-    );
-
-    // Cost image
-    const costImage = (
-      <img
-        className="item-cost-symbol"
-        src={`${getCostSymbol(cost)}`}
-        alt={`${alt}`}
-      />
-    );
-
-    
-
-    // Cost for item
-    const itemCost = (
-      <p className="item-text item-indent"><span className="item-this">this</span><span className="item-period">.</span>cost<span className="item-equal"> = </span><span className="item-string">"free, for now"</span>&#59;</p>
-    );
-
-    // Closing bracket
-    const closingBracket = (
-      <p className="item-text">&#125;</p>
-    );
-
-    const itemMid = (
-      <p className="item-text">&#59;</p>
-    )
-
     // Interactive buttons
     const itemButtons = (
       <div className="item-voter">
@@ -125,56 +80,60 @@ class Listitem extends React.Component {
       // Can vote and edit
       return (
         <div className="list-item-box">
-          {comment}
-          {itemTitle}
-          {itemLink}
-          {itemCost}
-          {closingBracket}
-          {/* Can edit */}
-          {editBtn}
+          <Comment />
+          <ItemTitle name={name} />
+          <ItemLink link={link} />
+          <ItemCost cost={cost}/>
+          <ItemVotes totalVotes={totalVotes} />
+          <ClosingBracket />
           {/* Can vote */}
           {itemButtons}
-          {commentEnd}
+          {/* Can edit */}
+          <EditItemButton flagItemForEdit={this.props.flagItemForEdit} objKey={objKey}/>
+          <CommentEnd />
         </div>
       );
     } else if (!isOwner && canVote) {
       // Can vote but not edit
       return (
         <div className="list-item-box">
-          {comment}
-          {itemTitle}
-          {itemLink}
-          {itemCost}
-          {closingBracket}
+          <Comment />
+          <ItemTitle name={name} />
+          <ItemLink link={link} />
+          <ItemCost cost={cost}/>
+          <ItemVotes totalVotes={totalVotes} />
+          <ClosingBracket />
           {/* Can vote */}
           {itemButtons}
-          {commentEnd}
+          <CommentEnd />
         </div>
       );
     } else if (isOwner && !canVote) {
       return (
         // Can edit but not vote
         <div className="list-item-box">
-          {comment}
-          {itemTitle}
-          {itemLink}
-          {itemCost}
-          {closingBracket}
+          <Comment />
+          <ItemTitle name={name} />
+          <ItemLink link={link} />
+          <ItemCost cost={cost}/>
+          <ItemVotes totalVotes={totalVotes} />
+          <ClosingBracket />
           {/* Can edit */}
-          {editBtn}
-          {commentEnd}
+          <EditItemButton flagItemForEdit={this.props.flagItemForEdit} objKey={objKey} />
+          <CommentEnd />
         </div>
       );
     } else {
       return (
         // Can just view item
         <div className="list-item-box">
-          {comment}
-          {itemTitle}
-          {itemLink}
-          {itemCost}
-          {closingBracket}
-          {commentEnd}
+          <Comment />
+          <ItemTitle name={name} />
+          <ItemLink link={link} />
+          <ItemCost cost={cost}/>
+          <ItemVotes totalVotes={totalVotes} />
+          <ClosingBracket />
+          <CommentEnd />
         </div>
       );
     }

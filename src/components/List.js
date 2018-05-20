@@ -1,6 +1,7 @@
 import React from "react";
 import Listitem from "./Listitem";
-
+import ListTitle from "./ListTitle";
+import { EditListButton } from "./EditButton";
 // This component displays the lists and items from state
 
 class List extends React.Component {
@@ -32,39 +33,21 @@ class List extends React.Component {
     // Sort the items so components are displayed based on votes
     let sortedItems = Object.values(items).sort((a, b) => b.rank - a.rank);
 
-    // List title snippet
-    const listTitle = (
-      <div className="list-heading">
-        <div className="list-title-tab">
-          <h3 className="list-title">{title}<span className="item-text">.js</span></h3>
-        </div>
-      </div>
-    );
-
-
-    // Edit button snippet for owner
-    const editListBtn = (
-      <button
-        className="edit-btn"
-        onClick={() => this.props.flagListForEdit()}
-      />
-    );
-
     // If owner is logged in
     if (isOwner) {
       // Check for an empty list
       if (items === "") {
         return (
           <div className="list-box">
-            {listTitle}
-            {editListBtn}
+            <ListTitle title={title} />
+            <EditListButton flagListForEdit={this.props.flagListForEdit} />
           </div>
         );
       } else {
         return (
           <div className="list-box">
-            {listTitle}
-            {editListBtn}
+            <ListTitle title={title} />
+            <EditListButton flagListForEdit={this.props.flagListForEdit} />
             <div className="list-items">
               {/* Display the sorted items */}
               {sortedItems.map((item, index) => (
@@ -88,13 +71,13 @@ class List extends React.Component {
       if (items === "") {
         return (
           <div className="list-box">
-            {listTitle}
+            <ListTitle title={title} />
           </div>
         );
       } else {
         return (
           <div className="list-box">
-            {listTitle}
+            <ListTitle title={title} />
             <div className="list-items">
               {/* Display the sorted items */}
               {sortedItems.map((item, index) => (

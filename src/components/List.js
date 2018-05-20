@@ -34,7 +34,11 @@ class List extends React.Component {
 
     // List title snippet
     const listTitle = (
-      <h2 className="list-title">{title}<span className="item-period">.</span><span className="item-text">js</span></h2>
+      <div className="list-heading">
+        <div className="list-title-tab">
+          <h3 className="list-title">{title}<span className="item-text">.js</span></h3>
+        </div>
+      </div>
     );
 
 
@@ -61,19 +65,21 @@ class List extends React.Component {
           <div className="list-box">
             {listTitle}
             {editListBtn}
-            {/* Display the sorted items */}
-            {sortedItems.map((item, index) => (
-              <Listitem
-                key={item.objKey}
-                itemName={item.objKey}
-                listItemInfo={item}
-                listName={this.props.selectedListName}
-                itemInteraction={this.props.itemInteraction}
-                currentUser={this.props.userId}
-                flagItemForEdit={this.props.flagItemForEdit}
-                userVoteCount={this.props.userVoteCount}
-              />
-            ))}
+            <div className="list-items">
+              {/* Display the sorted items */}
+              {sortedItems.map((item, index) => (
+                <Listitem
+                  key={item.objKey}
+                  itemName={item.objKey}
+                  listItemInfo={item}
+                  listName={this.props.selectedListName}
+                  itemInteraction={this.props.itemInteraction}
+                  currentUser={this.props.userId}
+                  flagItemForEdit={this.props.flagItemForEdit}
+                  userVoteCount={this.props.userVoteCount}
+                />
+              ))}
+            </div>
           </div>
         );
       }
@@ -89,19 +95,21 @@ class List extends React.Component {
         return (
           <div className="list-box">
             {listTitle}
-            {/* Display the sorted items */}
-            {sortedItems.map((item, index) => (
-              <Listitem
-                key={item.objKey}
-                itemName={item.objKey}
-                listItemInfo={item}
-                listName={this.props.selectedListName}
-                itemInteraction={this.props.itemInteraction}
-                currentUser={this.props.userId}
-                flagItemForEdit={this.props.flagItemForEdit}
-                userVoteCount={this.props.userVoteCount}
-              />
-            ))}
+            <div className="list-items">
+              {/* Display the sorted items */}
+              {sortedItems.map((item, index) => (
+                <Listitem
+                  key={item.objKey}
+                  itemName={item.objKey}
+                  listItemInfo={item}
+                  listName={this.props.selectedListName}
+                  itemInteraction={this.props.itemInteraction}
+                  currentUser={this.props.userId}
+                  flagItemForEdit={this.props.flagItemForEdit}
+                  userVoteCount={this.props.userVoteCount}
+                />
+              ))}
+            </div>
           </div>
         );
       }

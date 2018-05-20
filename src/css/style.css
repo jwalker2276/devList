@@ -1,17 +1,22 @@
 :root {
   /* Font-Colors */
-  --font-comment: blue;
-  --font-class: orange;
-  --font-itemTitle: red;
-  --font-this: pink;
-  --font-period: orange;
-  --font-equal: var(--font-class);
-  --font-text-light: white;
-  --font-string: green;
-  --font-important: darkred;
+  --font-comment:#1b998b;
+  --font-class:#E17400;
+  --font-itemTitle:#fe7f2d;
+  --font-this: #d62828;
+  --font-period: #E17400;
+  --font-equal: #fe7f2d;
+  --font-text-light:#fbf5f3;
+  --font-string: #1b998b;
+  --font-important: #d62828;
   /* List item colors */
   --item-border-left: gray;
-  --item-background: black;
+  /* Background colors */
+  --background-light: #3a506b;
+  --background-mid: #1c2541;
+  --background-dark: #0b132b;
+  /* List title colors */
+  --list-title-bottom-border:#E17400;
 }
 
 html,
@@ -21,14 +26,20 @@ body {
 }
 
 body {
-  
+  font-size: 16px;
+  font-family: 'Fira Sans', sans-serif;
   height: 100vh;
   width: 100vw;
+  line-height: 2.0;
 }
 
 #main {
   height: inherit;
   width: inherit;
+}
+
+p {
+  margin: 0 0.5em;
 }
 
 /* App styles */
@@ -101,41 +112,50 @@ body {
 }
 
 
-.lists-section {
+.list-section {
   grid-area: lists;
 }
 
 /* List styles */
 
 .list-box {
-  background-color: var(--item-background);
+  background-color: var(--background-light);
+}
+
+.list-heading {
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--background-dark);
+}
+
+.list-title-tab {
+  width: 250px;
+  background-color: var(--background-mid);
+  border-bottom: 2px solid var(--font-class);
 }
 
 .list-title {
   color: var(--font-text-light);
-  border: 1px solid var(--item-border-left);
+  margin: 0;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.list-items {
+  display: grid;
+  grid-template-columns: 5% 1fr;
 }
 
 /* End of list styles */
 
 /* Item styles */
- 
-/*
---font-comment: blue;
-  --font-class: orange;
-  --font-itemTitle: red;
-  --font-this: pink;
-  --font-period: orange;
-  --font-equal: var(--font-class);
-  --font-text-light: white;
-  --font-string: green;
-  --font-important: darkred;
-  --item-border-left: gray;
-  --item-background: darkblue; 
-*/
 
 .list-item-box {
-  background-color: var(--item-background);
+  background-color: var(--background-light);
+  grid-column: 2 / -1;
+}
+
+.item-indent {
+  padding-left: 20px;
 }
 
 .item-text {

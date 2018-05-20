@@ -51,6 +51,10 @@ class Listitem extends React.Component {
       <p className="item-comment">// Item</p>
     );
 
+    const commentEnd = (
+      <p className="item-comment">// -----------------------------</p>
+    );
+
     // Link for item
     const itemTitle = (
       <p className="item-class">class <span className="item-title">{`${name}`}</span> <span className="item-text">&#123;</span></p>
@@ -66,7 +70,7 @@ class Listitem extends React.Component {
 
     // Title for item
     const itemLink = (
-      <p className="item-text"><span className="item-this">this</span><span className="item-period">.</span>link<span className="item-equal"> = </span><span className="item-string">"</span><a className="item-link" href={`${link}`}>{`${link}`}</a><span className="item-string">"</span>&#59;</p>
+      <p className="item-text item-indent"><span className="item-this">this</span><span className="item-period">.</span>link<span className="item-equal"> = </span><span className="item-string">"</span><a className="item-link" href={`${link}`}>{`${link}`}</a><span className="item-string">"</span>&#59;</p>
     );
 
     // Cost image
@@ -78,14 +82,26 @@ class Listitem extends React.Component {
       />
     );
 
+    
+
     // Cost for item
     const itemCost = (
-      <p className="item-text"><span className="item-this">this</span><span className="item-period">.</span>cost<span className="item-equal"> = </span><span className="item-string">"free, for now"</span>&#59;<br/>&#125;</p>
+      <p className="item-text item-indent"><span className="item-this">this</span><span className="item-period">.</span>cost<span className="item-equal"> = </span><span className="item-string">"free, for now"</span>&#59;</p>
     );
+
+    // Closing bracket
+    const closingBracket = (
+      <p className="item-text">&#125;</p>
+    );
+
+    const itemMid = (
+      <p className="item-text">&#59;</p>
+    )
 
     // Interactive buttons
     const itemButtons = (
       <div className="item-voter">
+        <p className="item-comment">// Vote here or don't we don't care.</p>
         <button
           name="vote-up"
           onClick={this.handleClick}
@@ -112,11 +128,13 @@ class Listitem extends React.Component {
           {comment}
           {itemTitle}
           {itemLink}
+          {itemCost}
+          {closingBracket}
           {/* Can edit */}
           {editBtn}
-          {itemCost}
           {/* Can vote */}
           {itemButtons}
+          {commentEnd}
         </div>
       );
     } else if (!isOwner && canVote) {
@@ -127,8 +145,10 @@ class Listitem extends React.Component {
           {itemTitle}
           {itemLink}
           {itemCost}
+          {closingBracket}
           {/* Can vote */}
           {itemButtons}
+          {commentEnd}
         </div>
       );
     } else if (isOwner && !canVote) {
@@ -138,19 +158,23 @@ class Listitem extends React.Component {
           {comment}
           {itemTitle}
           {itemLink}
+          {itemCost}
+          {closingBracket}
           {/* Can edit */}
           {editBtn}
-          {itemCost}
+          {commentEnd}
         </div>
       );
     } else {
       return (
-        // Can just look at item
+        // Can just view item
         <div className="list-item-box">
           {comment}
           {itemTitle}
           {itemLink}
           {itemCost}
+          {closingBracket}
+          {commentEnd}
         </div>
       );
     }

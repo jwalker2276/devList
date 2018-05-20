@@ -74,6 +74,8 @@ p {
   display: grid;
   grid-template-areas: "logo messages user";
   grid-template-columns: 1fr 40% 1fr;
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--background-mid);
 }
 
 .header-logo {
@@ -95,7 +97,9 @@ p {
 .sidebar {
   grid-area: sidebar;
   text-align: center;
-  background-color: var(--sidebar-bkg-color);
+  background-color: var(--background-dark);
+  color: var(--font-text-light);
+  border-right: 1px solid var(--background-light);
 }
 
 .sidebar-lists {
@@ -114,6 +118,7 @@ p {
 
 .list-section {
   grid-area: lists;
+  background-color: var(--background-light);
 }
 
 /* List styles */
@@ -122,15 +127,17 @@ p {
   background-color: var(--background-light);
 }
 
-.list-heading {
+.list-tab-wrapper {
+  display: grid;
   background-color: var(--background-light);
   border-bottom: 1px solid var(--background-dark);
+  grid-template-columns: auto 5% 1fr; 
 }
 
 .list-title-tab {
-  width: 250px;
   background-color: var(--background-mid);
   border-bottom: 2px solid var(--font-class);
+  grid-column: 1 / 2;
 }
 
 .list-title {
@@ -153,7 +160,29 @@ p {
 
 /* End of list styles */
 
+/* Edit Button styles */
+
+.edit-list-btn {
+  grid-column: 2 / 3;
+  background-image: url("/images/cog.svg");
+  background-color: var(--background-mid);
+  border: none;
+  border-bottom: 2px solid var(--font-class);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+}
+
+/* End of Edit Button styles */
+
+
+
 /* Item styles */
+
+.list-numbers-box {
+  background-color: var(--background-mid);
+  grid-column: 1 / 2;
+}
 
 .list-item-box {
   background-color: var(--background-light);

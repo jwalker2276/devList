@@ -39,15 +39,19 @@ class List extends React.Component {
       if (items === "") {
         return (
           <div className="list-box">
-            <ListTitle title={title} />
-            <EditListButton flagListForEdit={this.props.flagListForEdit} />
+            <div className="list-tab-wrapper">
+              <ListTitle title={title} />
+              <EditListButton flagListForEdit={this.props.flagListForEdit} />
+            </div>
           </div>
         );
       } else {
         return (
           <div className="list-box">
-            <ListTitle title={title} />
-            <EditListButton flagListForEdit={this.props.flagListForEdit} />
+            <div className="list-tab-wrapper">
+              <ListTitle title={title} />
+              <EditListButton flagListForEdit={this.props.flagListForEdit} />
+            </div>
             <div className="list-items">
               {/* Display the sorted items */}
               {sortedItems.map((item, index) => (
@@ -71,13 +75,17 @@ class List extends React.Component {
       if (items === "") {
         return (
           <div className="list-box">
-            <ListTitle title={title} />
+            <div className="list-tab-wrapper">
+              <ListTitle title={title} />
+            </div>
           </div>
         );
       } else {
         return (
           <div className="list-box">
-            <ListTitle title={title} />
+            <div className="list-tab-wrapper">
+              <ListTitle title={title} />
+            </div>
             <div className="list-items">
               {/* Display the sorted items */}
               {sortedItems.map((item, index) => (

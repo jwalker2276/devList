@@ -56,6 +56,8 @@ class User extends React.Component {
       }
     }
 
+    // user clicks logout button in header 
+
     // if the userpanel is closed and the userStatus is loggedIn
     // logout
 

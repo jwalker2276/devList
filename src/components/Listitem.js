@@ -46,6 +46,16 @@ class Listitem extends React.Component {
       canVote = false;
     }
 
+    // Comment snippet
+    const comment = (
+      <p className="item-comment">// Item</p>
+    );
+
+    // Link for item
+    const itemTitle = (
+      <p className="item-class">class <span className="item-title">{`${name}`}</span> <span className="item-text">&#123;</span></p>
+    );
+
     // Edit button snippet for owner
     const editBtn = (
       <button
@@ -54,9 +64,9 @@ class Listitem extends React.Component {
       />
     );
 
-    // Title and link for item
-    const titleLink = (
-      <a className="item-name-link" href={`${link}`}>{`${name}`}</a>
+    // Title for item
+    const itemLink = (
+      <p className="item-text"><span className="item-this">this</span><span className="item-period">.</span>link<span className="item-equal"> = </span><span className="item-string">"</span><a className="item-link" href={`${link}`}>{`${link}`}</a><span className="item-string">"</span>&#59;</p>
     );
 
     // Cost image
@@ -66,6 +76,11 @@ class Listitem extends React.Component {
         src={`${getCostSymbol(cost)}`}
         alt={`${alt}`}
       />
+    );
+
+    // Cost for item
+    const itemCost = (
+      <p className="item-text"><span className="item-this">this</span><span className="item-period">.</span>cost<span className="item-equal"> = </span><span className="item-string">"free, for now"</span>&#59;<br/>&#125;</p>
     );
 
     // Interactive buttons
@@ -93,11 +108,13 @@ class Listitem extends React.Component {
     if (isOwner && canVote) {
       // Can vote and edit
       return (
-        <div className="list-item">
-          {titleLink}
+        <div className="list-item-box">
+          {comment}
+          {itemTitle}
+          {itemLink}
           {/* Can edit */}
           {editBtn}
-          {costImage}
+          {itemCost}
           {/* Can vote */}
           {itemButtons}
         </div>
@@ -105,9 +122,11 @@ class Listitem extends React.Component {
     } else if (!isOwner && canVote) {
       // Can vote but not edit
       return (
-        <div className="list-item">
-          {titleLink}
-          {costImage}
+        <div className="list-item-box">
+          {comment}
+          {itemTitle}
+          {itemLink}
+          {itemCost}
           {/* Can vote */}
           {itemButtons}
         </div>
@@ -115,19 +134,23 @@ class Listitem extends React.Component {
     } else if (isOwner && !canVote) {
       return (
         // Can edit but not vote
-        <div className="list-item">
-          {titleLink}
+        <div className="list-item-box">
+          {comment}
+          {itemTitle}
+          {itemLink}
           {/* Can edit */}
           {editBtn}
-          {costImage}
+          {itemCost}
         </div>
       );
     } else {
       return (
         // Can just look at item
-        <div className="list-item">
-          {titleLink}
-          {costImage}
+        <div className="list-item-box">
+          {comment}
+          {itemTitle}
+          {itemLink}
+          {itemCost}
         </div>
       );
     }

@@ -1,12 +1,17 @@
 :root {
-  --app-bkg-color: #d8dbe2;
-  --sidebar-bkg-color: #373f51;
-
-  --header-color: #373f51;
-  --items-color: #a9bcd0;
-
-  --light-font-color: var(--app-bkg-color);
-  --dark-font-color: #1b1b1eg;
+  /* Font-Colors */
+  --font-comment: blue;
+  --font-class: orange;
+  --font-itemTitle: red;
+  --font-this: pink;
+  --font-period: orange;
+  --font-equal: var(--font-class);
+  --font-text-light: white;
+  --font-string: green;
+  --font-important: darkred;
+  /* List item colors */
+  --item-border-left: gray;
+  --item-background: black;
 }
 
 html,
@@ -16,8 +21,7 @@ body {
 }
 
 body {
-  background: var(--app-bkg-color);
-  color: var(--dark-font-color);
+  
   height: 100vh;
   width: 100vw;
 }
@@ -56,7 +60,6 @@ body {
 /* Header styles */
 .header-section {
   grid-area: header;
-  background-color: var(--header-color);
   display: grid;
   grid-template-areas: "logo messages user";
   grid-template-columns: 1fr 40% 1fr;
@@ -97,57 +100,96 @@ body {
   margin: 10px;
 }
 
+
 .lists-section {
   grid-area: lists;
 }
 
-.list {
-  margin: 5px auto;
-  background-color: var(--header-color);
+/* List styles */
+
+.list-box {
+  background-color: var(--item-background);
 }
 
 .list-title {
-  margin: 0;
+  color: var(--font-text-light);
+  border: 1px solid var(--item-border-left);
 }
 
-.list-item {
-  margin: 5px;
-  display: grid;
-  grid-template-areas: "name cost voter";
-  grid-template-columns: 20% 10% 1fr;
-  background-color: var(--items-color);
+/* End of list styles */
+
+/* Item styles */
+ 
+/*
+--font-comment: blue;
+  --font-class: orange;
+  --font-itemTitle: red;
+  --font-this: pink;
+  --font-period: orange;
+  --font-equal: var(--font-class);
+  --font-text-light: white;
+  --font-string: green;
+  --font-important: darkred;
+  --item-border-left: gray;
+  --item-background: darkblue; 
+*/
+
+.list-item-box {
+  background-color: var(--item-background);
 }
 
-.item-name {
-  grid-area: name;
+.item-text {
+  color: var(--font-text-light);
+}
+
+.item-comment{
+  color: var(--font-comment);
+}
+
+.item-class{
+  color: var(--font-class);
+}
+
+.item-title {
+  color: var(--font-itemTitle);
+}
+
+.item-this {
+  color: var(--font-this);
+}
+
+.item-period {
+  color: var(--font-period);
+}
+
+.item-equal {
+  color: var(--font-equal);
+}
+
+.item-string {
+  color: var(--font-string);
 }
 
 .item-link {
-  grid-area: link;
+  color: var(--font-string);
 }
 
 .item-cost-symbol {
-  grid-area: cost;
-  justify-self: center;
-  align-self: center;
   max-width: 25px;
+  color: white;
 }
 
 .item-voter {
-  grid-area: voter;
-  display: grid;
-  grid-template-areas: "vote-up total-votes vote-down report";
-  grid-template-columns: 1fr auto 1fr 1fr;
 }
 
 .total-votes-span {
-  text-align: center;
 }
+
+/* End of item styles */
 
 /* User styles */
 
 .user-section {
-  background-color: blue;
   grid-area: user;
 }
 

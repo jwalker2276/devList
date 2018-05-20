@@ -32,6 +32,12 @@ class List extends React.Component {
     // Sort the items so components are displayed based on votes
     let sortedItems = Object.values(items).sort((a, b) => b.rank - a.rank);
 
+    // List title snippet
+    const listTitle = (
+      <h2 className="list-title">{title}<span className="item-period">.</span><span className="item-text">js</span></h2>
+    );
+
+
     // Edit button snippet for owner
     const editListBtn = (
       <button
@@ -45,15 +51,15 @@ class List extends React.Component {
       // Check for an empty list
       if (items === "") {
         return (
-          <div className="list">
-            <h2 className="list-title">{title}</h2>
+          <div className="list-box">
+            {listTitle}
             {editListBtn}
           </div>
         );
       } else {
         return (
-          <div className="list">
-            <h2 className="list-title">{title}</h2>
+          <div className="list-box">
+            {listTitle}
             {editListBtn}
             {/* Display the sorted items */}
             {sortedItems.map((item, index) => (
@@ -75,14 +81,14 @@ class List extends React.Component {
       // Check for an empty list
       if (items === "") {
         return (
-          <div className="list">
-            <h2 className="list-title">{title}</h2>
+          <div className="list-box">
+            {listTitle}
           </div>
         );
       } else {
         return (
-          <div className="list">
-            <h2 className="list-title">{title}</h2>
+          <div className="list-box">
+            {listTitle}
             {/* Display the sorted items */}
             {sortedItems.map((item, index) => (
               <Listitem

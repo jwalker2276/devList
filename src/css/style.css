@@ -2,7 +2,7 @@
   /* Font-Colors */
   --font-comment:#1b998b;
   --font-class:#E17400;
-  --font-itemTitle:#fe7f2d;
+  --font-itemTitle:#d62828;
   --font-this: #d62828;
   --font-period: #E17400;
   --font-equal: #fe7f2d;
@@ -94,34 +94,53 @@ p {
 
 /* End of Header styles */
 
-.sidebar {
+/* Sidebar styles */
+
+.section-sidebar {
   grid-area: sidebar;
-  text-align: center;
+  padding-left: 15%;
+  padding-top: 15px;
   background-color: var(--background-dark);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
 }
 
-.sidebar-lists {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
+.sidebar-section-title {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.sidebar-list-title {
+  margin: 0;
+}
+
+.sidebar-lists-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
 }
 
 .sidebar-list-button {
-  width: 50%;
-  margin: 10px;
+  padding: 5px 0 5px 15px;
+  max-width: 90%;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  font:inherit;
+  font-size: .9em;
+  background-color: var(--background-dark);
+  color: var(--font-text-light);
+
 }
 
+/* End of sidebar styles */
+
+/* List styles */
 
 .list-section {
   grid-area: lists;
   background-color: var(--background-light);
 }
-
-/* List styles */
 
 .list-box {
   background-color: var(--background-light);

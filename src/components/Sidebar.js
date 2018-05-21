@@ -18,9 +18,10 @@ class Sidebar extends React.Component {
     let mostPopularListNumber = Number(mostPopularList);
 
     return (
-      <section className="sidebar">
-        <h2>Newest List</h2>
-        <div className="sidebar-lists">
+      <section className="section-sidebar">
+        <h5 className="sidebar-section-title">List Explorer</h5>
+        <p className="sidebar-list-title">&#8895; Newest List</p>
+        <div className="sidebar-lists-container">
           <Sidebaritem
             key={newestList}
             listKey={newestList}
@@ -29,8 +30,8 @@ class Sidebar extends React.Component {
             addToViewCount={this.props.addToViewCount}
           />
         </div>
-        <h2>Most Popular List</h2>
-        <div className="sidebar-lists">
+        <p className="sidebar-list-title">&#8895; Most Popular List</p>
+        <div className="sidebar-lists-container">
           <Sidebaritem
             key={mostPopularList}
             listKey={mostPopularList}
@@ -41,8 +42,8 @@ class Sidebar extends React.Component {
             addToViewCount={this.props.addToViewCount}
           />
         </div>
-        <h2>Categories</h2>
-        <div className="sidebar-lists">
+        <p className="sidebar-list-title">&#8895; Categories</p>
+        <div className="sidebar-lists-container">
           {Object.keys(this.props.listsCategories.lists).map(key => (
             <Sidebaritem
               key={key}

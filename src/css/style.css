@@ -255,21 +255,24 @@ p {
 .item-voter {
   padding-left: 0.5em;
   display: grid;
-  grid-template-columns: 100px 100px 35px 1fr;
-  grid-template-rows: 35px;
+  grid-template-columns: 120px 120px 30px 1fr;
+  grid-template-rows: 30px;
 }
 
 .vote-btn {
-  max-width: 100px;
+  text-transform: uppercase;
+  max-width: 120px;
   max-height: 35px;
   cursor: pointer;
+  color: var(--font-text-light);
+  font-size: 0.8em;
   background-color: var(--background-light);
   border: none;
 }
 
 .edit-item-btn {
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   margin: 0;
   padding: 0;
   background-image: url("/images/cog.svg");

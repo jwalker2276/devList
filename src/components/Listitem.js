@@ -60,15 +60,78 @@ class Listitem extends React.Component {
           itemInteraction={this.props.itemInteraction}
           listName={this.props.listName}
         />
-        {/* Disabled reporting for now */}
-        {/* <button name="report" onClick={this.handleClick} className="vote-btn">
-          report
-          {`${name}`}
-        </button> */}
+        {/* Can the user edit */}
+        {isOwner && (
+          <EditItemButton
+            flagItemForEdit={this.props.flagItemForEdit}
+            objKey={objKey}
+          />
+        )}
       </div>
     );
 
-    if (isOwner && canVote) {
+    // if (isOwner && canVote) {
+    //   // Can vote and edit
+    //   return (
+    //     <React.Fragment>
+    //       <div className="list-numbers-box" />
+    //       <div className="list-item-box">
+    //         <Comment />
+    //         <ItemTitle name={name} />
+    //         <ItemLink link={link} />
+    //         <ItemCost cost={cost} />
+    //         <ItemVotes totalVotes={totalVotes} />
+    //         <ClosingBracket />
+    //         {/* Can vote */}
+    //         {/* Can edit */}
+    //         {itemButtons}
+    //         <CommentEnd />
+    //       </div>
+    //     </React.Fragment>
+    //   );
+    // } else if (!isOwner && canVote) {
+    //   // Can vote but not edit
+    //   return (
+    //     <React.Fragment>
+    //       <div className="list-numbers-box" />
+    //       <div className="list-item-box">
+    //         <Comment />
+    //         <ItemTitle name={name} />
+    //         <ItemLink link={link} />
+    //         <ItemCost cost={cost} />
+    //         <ItemVotes totalVotes={totalVotes} />
+    //         <ClosingBracket />
+    //         {/* Can vote */}
+    //         {itemButtons}
+    //         <CommentEnd />
+    //       </div>
+    //     </React.Fragment>
+    //   );
+    // } else if (isOwner && !canVote) {
+    //   return (
+    //     // Can edit but not vote
+    //     <React.Fragment>
+    //       <div className="list-numbers-box" />
+    //       <div className="list-item-box">
+    //         <Comment />
+    //         <ItemTitle name={name} />
+    //         <ItemLink link={link} />
+    //         <ItemCost cost={cost} />
+    //         <ItemVotes totalVotes={totalVotes} />
+    //         <ClosingBracket />
+    //         {/* Can edit */}
+    //         <EditItemButton
+    //           flagItemForEdit={this.props.flagItemForEdit}
+    //           objKey={objKey}
+    //         />
+    //         <CommentEnd />
+    //       </div>
+    //     </React.Fragment>
+    //   );
+    // }
+    // try this
+    if (canVote) {
+      // if (isOwner && canVote) {
       // Can vote and edit
       return (
         <React.Fragment>
@@ -76,23 +139,18 @@ class Listitem extends React.Component {
           <div className="list-item-box">
             <Comment />
             <ItemTitle name={name} />
-            <EditItemButton
-              flagItemForEdit={this.props.flagItemForEdit}
-              objKey={objKey}
-            />
             <ItemLink link={link} />
             <ItemCost cost={cost} />
             <ItemVotes totalVotes={totalVotes} />
             <ClosingBracket />
-            {/* Can vote */}
+            {/* Can vote and maybe edit */}
             {itemButtons}
-            {/* Can edit */}
             <CommentEnd />
           </div>
         </React.Fragment>
       );
-    } else if (!isOwner && canVote) {
-      // Can vote but not edit
+      //
+    } else if (!canVote && isOwner) {
       return (
         <React.Fragment>
           <div className="list-numbers-box" />
@@ -103,29 +161,11 @@ class Listitem extends React.Component {
             <ItemCost cost={cost} />
             <ItemVotes totalVotes={totalVotes} />
             <ClosingBracket />
-            {/* Can vote */}
-            {itemButtons}
-            <CommentEnd />
-          </div>
-        </React.Fragment>
-      );
-    } else if (isOwner && !canVote) {
-      return (
-        // Can edit but not vote
-        <React.Fragment>
-          <div className="list-numbers-box" />
-          <div className="list-item-box">
-            <Comment />
-            <ItemTitle name={name} />
+            {/* Can just edit */}
             <EditItemButton
               flagItemForEdit={this.props.flagItemForEdit}
               objKey={objKey}
             />
-            <ItemLink link={link} />
-            <ItemCost cost={cost} />
-            <ItemVotes totalVotes={totalVotes} />
-            <ClosingBracket />
-            {/* Can edit */}
             <CommentEnd />
           </div>
         </React.Fragment>

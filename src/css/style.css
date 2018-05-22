@@ -1,12 +1,12 @@
 :root {
   /* Font-Colors */
-  --font-comment:#1b998b;
-  --font-class:#E17400;
-  --font-itemTitle:#d62828;
+  --font-comment: #1b998b;
+  --font-class: #e17400;
+  --font-itemTitle: #d62828;
   --font-this: #d62828;
-  --font-period: #E17400;
+  --font-period: #e17400;
   --font-equal: #fe7f2d;
-  --font-text-light:#fbf5f3;
+  --font-text-light: #fbf5f3;
   --font-string: #1b998b;
   --font-important: #d62828;
   /* List item colors */
@@ -16,7 +16,7 @@
   --background-mid: #1c2541;
   --background-dark: #0b132b;
   /* List title colors */
-  --list-title-bottom-border:#E17400;
+  --list-title-bottom-border: #e17400;
 }
 
 html,
@@ -27,10 +27,10 @@ body {
 
 body {
   font-size: 16px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   height: 100vh;
   width: 100vw;
-  line-height: 2.0;
+  line-height: 2;
 }
 
 #main {
@@ -126,11 +126,10 @@ p {
   text-align: left;
   cursor: pointer;
   border: none;
-  font:inherit;
-  font-size: .9em;
+  font: inherit;
+  font-size: 0.9em;
   background-color: var(--background-dark);
   color: var(--font-text-light);
-
 }
 
 /* End of sidebar styles */
@@ -150,7 +149,7 @@ p {
   display: grid;
   background-color: var(--background-light);
   border-bottom: 1px solid var(--background-dark);
-  grid-template-columns: auto 5% 1fr; 
+  grid-template-columns: auto 5% 1fr;
 }
 
 .list-title-tab {
@@ -194,8 +193,6 @@ p {
 
 /* End of Edit Button styles */
 
-
-
 /* Item styles */
 
 .list-numbers-box {
@@ -216,11 +213,11 @@ p {
   color: var(--font-text-light);
 }
 
-.item-comment{
+.item-comment {
   color: var(--font-comment);
 }
 
-.item-class{
+.item-class {
   color: var(--font-class);
 }
 
@@ -252,10 +249,36 @@ p {
   color: var(--font-important);
 }
 
-.item-voter {
+.total-votes-span {
 }
 
-.total-votes-span {
+.item-voter {
+  padding-left: 0.5em;
+  display: grid;
+  grid-template-columns: 100px 100px 35px 1fr;
+  grid-template-rows: 35px;
+}
+
+.vote-btn {
+  max-width: 100px;
+  max-height: 35px;
+  cursor: pointer;
+  background-color: var(--background-light);
+  border: none;
+}
+
+.edit-item-btn {
+  height: 35px;
+  width: 35px;
+  margin: 0;
+  padding: 0;
+  background-image: url("/images/cog.svg");
+  background-color: var(--background-light);
+  border: none;
+  cursor: pointer;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
 }
 
 /* End of item styles */
@@ -267,24 +290,6 @@ p {
 }
 
 /* End of user styles */
-
-.edit-btn {
-  min-width: 25px;
-  min-height: 25px;
-  background: url("/images/cog.svg") center / 25px 25px no-repeat;
-}
-
-.vote-btn {
-  height: 50px;
-  cursor: pointer;
-}
-
-.vote-btn:nth-of-type(1) {
-  background: url("/images/thumbs-up.svg") center / 25px 25px no-repeat;
-}
-.vote-btn:nth-of-type(2) {
-  background: url("/images/thumbs-down.svg") center / 25px 25px no-repeat;
-}
 
 .add-list-div {
   padding: 10px;

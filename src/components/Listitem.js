@@ -44,94 +44,7 @@ class Listitem extends React.Component {
       canVote = false;
     }
 
-    // Interactive buttons
-    const itemButtons = (
-      <div className="item-voter">
-        <p className="item-comment">// Vote here or don't we don't care.</p>
-        <VoteButton
-          action="vote-up"
-          itemName={this.props.itemName}
-          itemInteraction={this.props.itemInteraction}
-          listName={this.props.listName}
-        />
-        <VoteButton
-          action="vote-down"
-          itemName={this.props.itemName}
-          itemInteraction={this.props.itemInteraction}
-          listName={this.props.listName}
-        />
-        {/* Can the user edit */}
-        {isOwner && (
-          <EditItemButton
-            flagItemForEdit={this.props.flagItemForEdit}
-            objKey={objKey}
-          />
-        )}
-      </div>
-    );
-
-    // if (isOwner && canVote) {
-    //   // Can vote and edit
-    //   return (
-    //     <React.Fragment>
-    //       <div className="list-numbers-box" />
-    //       <div className="list-item-box">
-    //         <Comment />
-    //         <ItemTitle name={name} />
-    //         <ItemLink link={link} />
-    //         <ItemCost cost={cost} />
-    //         <ItemVotes totalVotes={totalVotes} />
-    //         <ClosingBracket />
-    //         {/* Can vote */}
-    //         {/* Can edit */}
-    //         {itemButtons}
-    //         <CommentEnd />
-    //       </div>
-    //     </React.Fragment>
-    //   );
-    // } else if (!isOwner && canVote) {
-    //   // Can vote but not edit
-    //   return (
-    //     <React.Fragment>
-    //       <div className="list-numbers-box" />
-    //       <div className="list-item-box">
-    //         <Comment />
-    //         <ItemTitle name={name} />
-    //         <ItemLink link={link} />
-    //         <ItemCost cost={cost} />
-    //         <ItemVotes totalVotes={totalVotes} />
-    //         <ClosingBracket />
-    //         {/* Can vote */}
-    //         {itemButtons}
-    //         <CommentEnd />
-    //       </div>
-    //     </React.Fragment>
-    //   );
-    // } else if (isOwner && !canVote) {
-    //   return (
-    //     // Can edit but not vote
-    //     <React.Fragment>
-    //       <div className="list-numbers-box" />
-    //       <div className="list-item-box">
-    //         <Comment />
-    //         <ItemTitle name={name} />
-    //         <ItemLink link={link} />
-    //         <ItemCost cost={cost} />
-    //         <ItemVotes totalVotes={totalVotes} />
-    //         <ClosingBracket />
-    //         {/* Can edit */}
-    //         <EditItemButton
-    //           flagItemForEdit={this.props.flagItemForEdit}
-    //           objKey={objKey}
-    //         />
-    //         <CommentEnd />
-    //       </div>
-    //     </React.Fragment>
-    //   );
-    // }
-    // try this
-    if (canVote) {
-      // if (isOwner && canVote) {
+    if (isOwner && canVote) {
       // Can vote and edit
       return (
         <React.Fragment>
@@ -143,14 +56,35 @@ class Listitem extends React.Component {
             <ItemCost cost={cost} />
             <ItemVotes totalVotes={totalVotes} />
             <ClosingBracket />
-            {/* Can vote and maybe edit */}
-            {itemButtons}
+            {/* Can vote */}
+            {/* Can edit */}
+            <div className="item-voter">
+              <p className="item-comment">
+                // Vote here or don't we don't care.
+              </p>
+              <VoteButton
+                action="vote-up"
+                itemName={this.props.itemName}
+                itemInteraction={this.props.itemInteraction}
+                listName={this.props.listName}
+              />
+              <VoteButton
+                action="vote-down"
+                itemName={this.props.itemName}
+                itemInteraction={this.props.itemInteraction}
+                listName={this.props.listName}
+              />
+              <EditItemButton
+                flagItemForEdit={this.props.flagItemForEdit}
+                objKey={objKey}
+              />
+            </div>
             <CommentEnd />
           </div>
         </React.Fragment>
       );
-      //
-    } else if (!canVote && isOwner) {
+    } else if (!isOwner && canVote) {
+      // Can vote but not edit
       return (
         <React.Fragment>
           <div className="list-numbers-box" />
@@ -161,11 +95,47 @@ class Listitem extends React.Component {
             <ItemCost cost={cost} />
             <ItemVotes totalVotes={totalVotes} />
             <ClosingBracket />
-            {/* Can just edit */}
-            <EditItemButton
-              flagItemForEdit={this.props.flagItemForEdit}
-              objKey={objKey}
-            />
+            {/* Can vote */}
+            <div className="item-voter">
+              <p className="item-comment">
+                // Vote here or don't we don't care.
+              </p>
+              <VoteButton
+                action="vote-up"
+                itemName={this.props.itemName}
+                itemInteraction={this.props.itemInteraction}
+                listName={this.props.listName}
+              />
+              <VoteButton
+                action="vote-down"
+                itemName={this.props.itemName}
+                itemInteraction={this.props.itemInteraction}
+                listName={this.props.listName}
+              />
+            </div>
+            <CommentEnd />
+          </div>
+        </React.Fragment>
+      );
+    } else if (isOwner && !canVote) {
+      return (
+        // Can edit but not vote
+        <React.Fragment>
+          <div className="list-numbers-box" />
+          <div className="list-item-box">
+            <Comment />
+            <ItemTitle name={name} />
+            <ItemLink link={link} />
+            <ItemCost cost={cost} />
+            <ItemVotes totalVotes={totalVotes} />
+            <ClosingBracket />
+            {/* Can edit */}
+            <div className="item-voter">
+              <EditItemButton
+                flagItemForEdit={this.props.flagItemForEdit}
+                objKey={objKey}
+              />
+            </div>
             <CommentEnd />
           </div>
         </React.Fragment>

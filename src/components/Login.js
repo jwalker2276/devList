@@ -3,7 +3,7 @@ import React from "react";
 class Login extends React.Component {
   render() {
     return (
-      <section className="user-section">
+      <React.Fragment>
         <button
           className="btn-login-github"
           onClick={() => this.props.authenticate("Github")}
@@ -16,7 +16,13 @@ class Login extends React.Component {
         >
           Login with Facebook
         </button>
-      </section>
+        <button
+          className="btn-login-cancel"
+          onClick={() => this.props.uiCommands("closeUserPanel")}
+        >
+          Cancel
+        </button>
+      </React.Fragment>
     );
   }
 }

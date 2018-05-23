@@ -64,6 +64,7 @@ p {
   grid-template-areas:
     "header header header"
     "sidebar lists user";
+  overflow: hidden;
 }
 
 /* End of app styles */
@@ -72,24 +73,34 @@ p {
 .header-section {
   grid-area: header;
   display: grid;
+  align-items: center;
   grid-template-areas: "logo messages user";
-  grid-template-columns: 1fr 40% 1fr;
+  grid-template-columns: 1fr auto 1fr;
   background-color: var(--background-light);
   border-bottom: 1px solid var(--background-mid);
 }
 
 .header-logo {
   grid-area: logo;
-  max-width: 50px;
+  max-width: 35px;
+  max-height: 35px;
+  justify-self: start;
 }
 
 .header-messages {
   grid-area: messages;
+  justify-self: center;
+  color: var(--font-text-light);
 }
 
 .header-user {
   grid-area: user;
-  justify-items: end;
+  justify-self: end;
+}
+
+.header-info-btn {
+  max-width: 35px;
+  max-height: 35px;
 }
 
 /* End of Header styles */
@@ -309,6 +320,11 @@ p {
   margin: 0;
   text-align: center;
   padding: 5px 10px;
+}
+
+.user-login-btns {
+  display: grid;
+  grid-template-rows: 5% 5% 5% 1fr;
 }
 
 /* End of user styles */

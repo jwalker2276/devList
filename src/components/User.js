@@ -350,7 +350,17 @@ class User extends React.Component {
     if (!this.state.owner) {
       return (
         <section className="user-section">
-          <Login authenticate={this.authenticate} />
+          <div className="user-tab-wrapper">
+            <div className="user-title-tab">
+              <h3 className="user-title">User Setting.js</h3>
+            </div>
+          </div>
+          <div className="user-login-btns">
+            <Login
+              authenticate={this.authenticate}
+              uiCommands={this.props.uiCommands}
+            />
+          </div>
         </section>
       );
     }
@@ -359,6 +369,11 @@ class User extends React.Component {
     if (this.props.editListFlag) {
       return (
         <section className="user-section">
+          <div className="user-tab-wrapper">
+            <div className="user-title-tab">
+              <h3 className="user-title">User Setting.js</h3>
+            </div>
+          </div>
           <Editlist
             selectedList={this.props.state.user.selectedList}
             lists={this.props.state.lists}
@@ -373,6 +388,11 @@ class User extends React.Component {
       const itemKey = this.props.editItemFlag;
       return (
         <section className="user-section">
+          <div className="user-tab-wrapper">
+            <div className="user-title-tab">
+              <h3 className="user-title">User Setting.js</h3>
+            </div>
+          </div>
           <EditItem
             selectedList={this.props.state.user.selectedList}
             lists={this.props.state.lists}
@@ -399,6 +419,7 @@ class User extends React.Component {
           userId={this.state.owner}
         />
         <button onClick={this.props.loadStarterList}>Load Starter List</button>
+        {logout}
       </section>
     );
   }

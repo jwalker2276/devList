@@ -249,9 +249,6 @@ p {
   color: var(--font-important);
 }
 
-.total-votes-span {
-}
-
 .item-voter {
   padding-left: 0.5em;
   display: grid;
@@ -261,6 +258,7 @@ p {
 
 .vote-btn {
   text-transform: uppercase;
+  text-align: left;
   max-width: 120px;
   max-height: 35px;
   cursor: pointer;
@@ -290,6 +288,27 @@ p {
 
 .user-section {
   grid-area: user;
+  background-color: var(--background-light);
+}
+
+.user-tab-wrapper {
+  display: grid;
+  background-color: var(--background-light);
+  border-bottom: 1px solid var(--background-dark);
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.user-title-tab {
+  background-color: var(--background-mid);
+  border-bottom: 2px solid var(--font-class);
+}
+
+.user-title {
+  color: var(--font-text-light);
+  margin: 0;
+  text-align: center;
+  padding: 5px 10px;
 }
 
 /* End of user styles */

@@ -56,7 +56,7 @@ class User extends React.Component {
       }
     }
 
-    // user clicks logout button in header 
+    // user clicks logout button in header
 
     // if the userpanel is closed and the userStatus is loggedIn
     // logout
@@ -348,39 +348,50 @@ class User extends React.Component {
 
     // Check to see if the user is logged in
     if (!this.state.owner) {
-      return <Login authenticate={this.authenticate} />;
+      return (
+        <section className="user-section">
+          <Login authenticate={this.authenticate} />
+        </section>
+      );
     }
 
     // Check to see if the user wants to edit a list
     if (this.props.editListFlag) {
       return (
-        <Editlist
-          selectedList={this.props.state.user.selectedList}
-          lists={this.props.state.lists}
-          editList={this.props.editList}
-          flagListForEdit={this.props.flagListForEdit}
-        />
+        <section className="user-section">
+          <Editlist
+            selectedList={this.props.state.user.selectedList}
+            lists={this.props.state.lists}
+            editList={this.props.editList}
+            flagListForEdit={this.props.flagListForEdit}
+          />
+        </section>
       );
-    }
-
-    // Check to see if the user wants to edit a listitem
-    if (this.props.editItemFlag != null) {
+      // Check to see if the user wants to edit a listitem
+    } else if (this.props.editItemFlag != null) {
       // Get key for editItem
       const itemKey = this.props.editItemFlag;
       return (
-        <EditItem
-          selectedList={this.props.state.user.selectedList}
-          lists={this.props.state.lists}
-          editListItem={this.props.editListItem}
-          flagItemForEdit={this.props.flagItemForEdit}
-          itemKey={itemKey}
-        />
+        <section className="user-section">
+          <EditItem
+            selectedList={this.props.state.user.selectedList}
+            lists={this.props.state.lists}
+            editListItem={this.props.editListItem}
+            flagItemForEdit={this.props.flagItemForEdit}
+            itemKey={itemKey}
+          />
+        </section>
       );
     }
 
     // If logged in show features
     return (
       <section className="user-section">
+        <div className="user-tab-wrapper">
+          <div className="user-title-tab">
+            <h3 className="user-title">User Setting.js</h3>
+          </div>
+        </div>
         <Addlist addList={this.props.addList} userId={this.state.owner} />
         <Addlistitem
           state={this.props.state}

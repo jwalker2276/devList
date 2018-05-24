@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  font-size: 16px;
+  font-size: 20px;
   font-family: "Fira Sans", sans-serif;
   height: 100vh;
   width: 100vw;
@@ -48,7 +48,7 @@ p {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 20% 1fr 30%;
+  grid-template-columns: 20% 1fr 1fr;
   grid-template-rows: 4% 1fr;
   grid-template-areas:
     "header header header"
@@ -85,17 +85,32 @@ p {
   max-width: 35px;
   max-height: 35px;
   justify-self: start;
+  padding-left: 5px;
 }
 
 .header-messages {
   grid-area: messages;
   justify-self: center;
   color: var(--font-text-light);
+  font-size: 1em;
 }
 
 .header-user {
   grid-area: user;
   justify-self: end;
+  padding-right: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.header-user-loggedin {
+  grid-area: user;
+  justify-self: end;
+  padding-right: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
 
 .header-info-btn {
@@ -109,8 +124,6 @@ p {
 
 .section-sidebar {
   grid-area: sidebar;
-  padding-left: 15%;
-  padding-top: 15px;
   background-color: var(--background-dark);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
@@ -119,16 +132,19 @@ p {
 .sidebar-section-title {
   text-transform: uppercase;
   margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--background-light);
+  font-size: 1em;
 }
 
 .sidebar-list-title {
   margin: 0;
+  font-size: 0.9em;
 }
 
 .sidebar-lists-container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
 }
 
 .sidebar-list-button {
@@ -138,9 +154,13 @@ p {
   cursor: pointer;
   border: none;
   font: inherit;
-  font-size: 0.9em;
+  font-size: 0.8em;
   background-color: var(--background-dark);
   color: var(--font-text-light);
+}
+
+.sidebar-padding {
+  padding-left: 25px;
 }
 
 /* End of sidebar styles */
@@ -160,7 +180,7 @@ p {
   display: grid;
   background-color: var(--background-light);
   border-bottom: 1px solid var(--background-dark);
-  grid-template-columns: auto 5% 1fr;
+  grid-template-columns: auto 10% 1fr;
 }
 
 .list-title-tab {
@@ -174,6 +194,7 @@ p {
   margin: 0;
   text-align: center;
   padding: 5px 10px;
+  font-size: 1em;
 }
 
 .list-items {
@@ -214,6 +235,7 @@ p {
 .list-item-box {
   background-color: var(--background-light);
   grid-column: 2 / -1;
+  font-size: 0.9em;
 }
 
 .item-indent {
@@ -222,6 +244,7 @@ p {
 
 .item-text {
   color: var(--font-text-light);
+  font-style: normal;
 }
 
 .item-comment {
@@ -230,10 +253,12 @@ p {
 
 .item-class {
   color: var(--font-class);
+  font-style: italic;
 }
 
 .item-title {
   color: var(--font-itemTitle);
+  font-style: normal;
 }
 
 .item-this {
@@ -300,6 +325,7 @@ p {
 .user-section {
   grid-area: user;
   background-color: var(--background-light);
+  border-left: 1px solid var(--background-mid);
 }
 
 .user-tab-wrapper {
@@ -320,25 +346,70 @@ p {
   margin: 0;
   text-align: center;
   padding: 5px 10px;
+  font-size: 1em;
+}
+
+.user-login-btns-container {
+  display: grid;
+  grid-template-rows: 5% 5% 5% 1fr;
+  grid-gap: 10px;
+  padding: 5px;
 }
 
 .user-login-btns {
-  display: grid;
-  grid-template-rows: 5% 5% 5% 1fr;
+  cursor: pointer;
+  border: none;
+  font-size: 0.8em;
+  background-color: var(--background-light);
+  color: var(--font-text-light);
 }
 
 /* End of user styles */
 
+/* Add list styles */
+
 .add-list-div {
-  padding: 10px;
-  margin: 10px 0;
+  padding: 0 5px;
+}
+
+.add-list-grid {
+  display: grid;
+  grid-template-areas: "start mid end space";
+  grid-template-columns: auto auto auto 1fr;
+  grid-gap: 0.25em;
+  align-items: center;
+}
+
+.add-list-div p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* const */
+.add-list-div p.item-class {
+  color: var(--font-class);
+}
+
+.add-list-form {
+  margin: 0;
+}
+
+/* End of add list styles */
+
+.add-listitem-div {
+  padding: 0 5px;
+  font-size: 0.9em;
 }
 
 .add-listitem-div {
-  padding: 10px;
-  margin: 10px 0;
+  font-size: 1em;
 }
 
-form {
-  margin: 10px 5px;
+.add-listitem-div p:nth-of-type(1) {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.add-listitem-form {
+  margin: 0;
 }

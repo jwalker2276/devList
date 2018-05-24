@@ -7,7 +7,6 @@ import ItemVotes from "./ItemVotes";
 import VoteButton from "./VoteButton";
 import { EditItemButton } from "./EditButton";
 import { Comment, CommentEnd, ClosingBracket } from "./ItemSyntax";
-import { getCostSymbol } from "../helper-functions";
 
 // This component displays the a list item in a list
 

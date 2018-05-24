@@ -352,10 +352,10 @@ class User extends React.Component {
         <section className="user-section">
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
-              <h3 className="user-title">User Setting.js</h3>
+              <h5 className="user-title">User Setting.js</h5>
             </div>
           </div>
-          <div className="user-login-btns">
+          <div className="user-login-btns-container">
             <Login
               authenticate={this.authenticate}
               uiCommands={this.props.uiCommands}

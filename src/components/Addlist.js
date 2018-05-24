@@ -27,16 +27,27 @@ class Addlist extends React.Component {
   render() {
     return (
       <div className="add-list-div">
-        <h2>Add a new list</h2>
-        <form className="add-list-form" onSubmit={this.createList}>
-          <input
-            name="list-name"
-            ref={this.titleRef}
-            type="text"
-            placeholder="List name"
-          />
-          <button type="submit">Add List</button>
-        </form>
+        <p className="item-comment">// Add your new list</p>
+        <div className="add-list-grid">
+          <p className="item-class">
+            const <span className="item-text">list</span>
+            <span className="item-equal"> = </span>
+            <span className="item-number">new </span>
+          </p>
+          <form
+            className="add-list-form add-list-mid"
+            onSubmit={this.createList}
+          >
+            <input
+              name="list-name"
+              ref={this.titleRef}
+              type="text"
+              placeholder="List name"
+            />
+            <button type="submit">Add List</button>
+          </form>
+          <span className="item-text add-list-end">&#40;&#41;&#59;</span>
+        </div>
       </div>
     );
   }

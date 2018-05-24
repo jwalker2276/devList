@@ -5,19 +5,19 @@ class Login extends React.Component {
     return (
       <React.Fragment>
         <button
-          className="btn-login-github"
+          className="user-login-btns"
           onClick={() => this.props.authenticate("Github")}
         >
           Login with Github
         </button>
         <button
-          className="btn-login-facebook"
+          className="user-login-btns"
           onClick={() => this.props.authenticate("Facebook")}
         >
           Login with Facebook
         </button>
         <button
-          className="btn-login-cancel"
+          className="user-login-btns"
           onClick={() => this.props.uiCommands("closeUserPanel")}
         >
           Cancel

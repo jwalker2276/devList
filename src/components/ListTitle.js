@@ -1,8 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const ListTitle = props => (
   <div className="list-title-tab">
-    <h3 className="list-title">{props.title}<span className="item-text">.js</span></h3>
+    <h5 className="list-title">
+      {props.title}
+      <span className="item-text">.js</span>
+    </h5>
   </div>
 );
 

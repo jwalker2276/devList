@@ -25,7 +25,7 @@ class Header extends React.Component {
 
     // This group of buttons consist of "Login, Info".
     const buttonGroup = isLoggedIn ? (
-      <div className="header-user">
+      <div className="header-user-loggedin">
         {/* <button onClick={() => this.props.uiCommands("add")}>
           Add something new
         </button>

@@ -26,20 +26,27 @@ class Header extends React.Component {
     // This group of buttons consist of "Login, Info".
     const buttonGroup = isLoggedIn ? (
       <div className="header-user-loggedin">
-        {/* <button onClick={() => this.props.uiCommands("add")}>
-          Add something new
+        <button
+          className="syntax-btn"
+          onClick={() => this.props.uiCommands("info")}
+        >
+          Info
         </button>
-        <button onClick={() => this.props.uiCommands("closeUserPanel")}>
-          Logout
-        </button> */}
-        <button onClick={() => this.props.uiCommands("info")}>Info</button>
       </div>
     ) : (
       <div className="header-user">
-        <button onClick={() => this.props.uiCommands("openUserPanel")}>
+        <button
+          className="syntax-btn"
+          onClick={() => this.props.uiCommands("openUserPanel")}
+        >
           Login
         </button>
-        <button onClick={() => this.props.uiCommands("info")}>Info</button>
+        <button
+          className="syntax-btn"
+          onClick={() => this.props.uiCommands("info")}
+        >
+          Info
+        </button>
       </div>
     );
 

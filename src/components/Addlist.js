@@ -44,9 +44,11 @@ class Addlist extends React.Component {
               type="text"
               placeholder="List name"
             />
-            <button type="submit">Add List</button>
+            <span className="item-text add-list-end">&#40;&#41;&#59;</span>
+            <button className="syntax-btn" type="submit">
+              Add List
+            </button>
           </form>
-          <span className="item-text add-list-end">&#40;&#41;&#59;</span>
         </div>
       </div>
     );

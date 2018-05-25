@@ -49,81 +49,73 @@ class Addlistitem extends React.Component {
     // Get the title of the current list
     const listName = this.props.state.lists[selectedList].title;
 
-    // <div className="add-list-div">
-    //   <p className="item-comment">// Add your new list</p>
-    //   <div className="add-list-grid">
-    //     <p className="item-class">
-    //       const <span className="item-text">list</span>
-    //       <span className="item-equal"> = </span>
-    //       <span className="item-number">new </span>
-    //     </p>
-    //     <form className="add-list-form add-list-mid" onSubmit={this.createList}>
-    //       <input
-    //         name="list-name"
-    //         ref={this.titleRef}
-    //         type="text"
-    //         placeholder="List name"
-    //       />
-    //       <button type="submit">Add List</button>
-    //     </form>
-    //     <span className="item-text add-list-end">&#40;&#41;&#59;</span>
-    //   </div>
-    // </div>;
-
-    // { listName }
-
     return (
       <div className="add-listitem-div">
         <p className="item-comment">// Add to this list</p>
         <form className="add-listitem-form" onSubmit={this.createListItem}>
-          <label>
-            <span className="item-class">class </span>
-          </label>
-          <input
-            name="item-title"
-            ref={this.itemTitleRef}
-            type="text"
-            placeholder="item title"
-          />
-          <span className="item-class">
-            extends{" "}
-            <span className="item-title">
-              {listName} <span className="item-text">&#123;</span>
+          <div className=" add-listitem-line-one">
+            <label>
+              <span className="item-class">class </span>
+            </label>
+            <input
+              name="item-title"
+              ref={this.itemTitleRef}
+              type="text"
+              placeholder="item title"
+            />
+            <span className="item-class">
+              extends{" "}
+              <span className="item-title">
+                {listName} <span className="item-text">&#123;</span>
+              </span>
             </span>
-          </span>
-          <div className="form-details-indented-one item-indent">
+          </div>
+          {/* end of line one */}
+          <div className="add-listitem-line-two item-indent">
             <label className="item-class">
               constructor{" "}
               <span className="item-text"> (cost, link) &#123;</span>
             </label>
-            <div className="form-details-indented-two item-indent">
-              <label className="item-this">
-                this<span className="item-period">.</span>
-                <span className="item-text">link</span>
-                <span className="item-equal"> = </span>
-              </label>
-              <input
-                name="item-link"
-                ref={this.itemLinkRef}
-                type="text"
-                placeholder="www.example.com"
-              />
-              <span className="item-text">;</span>
-              <label className="item-this">
-                this<span className="item-period">.</span>
-                <span className="item-text">cost</span>
-                <span className="item-equal"> = </span>
-              </label>
-              <select name="cost" ref={this.itemCostRef}>
-                <option value="paid">Paid</option>
-                <option value="free">Free</option>
-              </select>
-              <span className="item-text">;</span>
-              <label className="form-closing item-text">&#125;</label>
-            </div>
           </div>
-          <button type="submit">Add to list</button>
-          <p className="item-text">&#125;</p>
+          {/* end of line two */}
+          <div className="add-listitem-line-three item-indent">
+            <label className="item-this item-indent">
+              this<span className="item-period">.</span>
+              <span className="item-text">link</span>
+              <span className="item-equal"> = </span>
+            </label>
+            <input
+              name="item-link"
+              ref={this.itemLinkRef}
+              type="text"
+              placeholder="www.example.com"
+            />
+            <span className="item-text">;</span>
+          </div>
+          {/* end of line three */}
+          <div className="add-listitem-line-four item-indent">
+            <label className="item-this item-indent">
+              this<span className="item-period">.</span>
+              <span className="item-text">cost</span>
+              <span className="item-equal"> = </span>
+            </label>
+            <select name="cost" ref={this.itemCostRef}>
+              <option value="paid">Paid</option>
+              <option value="free">Free</option>
+            </select>
+            <span className="item-text">;</span>
+          </div>
+          {/* end of line four */}
+          <div className="add-listitem-line-five">
+            <label className="form-closing item-text item-indent">&#125;</label>
+          </div>
+          {/* end of line five */}
+          <div className="add-listitem-line-six">
+            <p className="item-text">&#125;</p>
+          </div>
+          <button className="syntax-btn" type="submit">
+            Add to list
+          </button>
         </form>
       </div>
     );

@@ -344,7 +344,11 @@ class User extends React.Component {
 
   render() {
     // Log out button
-    const logout = <button onClick={this.logout}>Log Out</button>;
+    const logout = (
+      <button className="syntax-btn" onClick={this.logout}>
+        Log Out
+      </button>
+    );
 
     // Check to see if the user is logged in
     if (!this.state.owner) {
@@ -418,8 +422,8 @@ class User extends React.Component {
           addListItem={this.props.addListItem}
           userId={this.state.owner}
         />
-        <button onClick={this.props.loadStarterList}>Load Starter List</button>
         {logout}
+        <button onClick={this.props.loadStarterList}>Load Starter List</button>
       </section>
     );
   }

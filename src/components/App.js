@@ -404,6 +404,7 @@ class App extends React.Component {
           uiCommands={this.uiCommands}
         />
         <Sidebar
+          selectedList={this.state.user.selectedList}
           newestList={this.findNewestList()}
           mostPopularList={this.findMostPopularList()}
           listsCategories={this.state}

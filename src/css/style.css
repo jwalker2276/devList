@@ -168,6 +168,22 @@ p {
   background-color: var(--background-mid);
 }
 
+.sidebar-list-button {
+  padding: 5px 0 5px 15px;
+  max-width: 90%;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  font-size: 0.8em;
+  background-color: var(--background-mid);
+  color: var(--font-text-light);
+}
+
+.sidebar-list-button.active {
+  color: var(--font-class);
+}
+
 /* Input styles */
 
 input {
@@ -297,18 +313,6 @@ select {
 .sidebar-lists-container {
   display: grid;
   grid-template-columns: 1fr;
-}
-
-.sidebar-list-button {
-  padding: 5px 0 5px 15px;
-  max-width: 90%;
-  text-align: left;
-  cursor: pointer;
-  border: none;
-  font: inherit;
-  font-size: 0.8em;
-  background-color: var(--background-mid);
-  color: var(--font-text-light);
 }
 
 .sidebar-padding {

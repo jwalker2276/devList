@@ -10,11 +10,24 @@ class Sidebaritem extends React.Component {
   };
 
   render() {
-    return (
-      <button className="sidebar-list-button" onClick={this.handleClick}>
-        {this.props.listName}
-      </button>
-    );
+    const { listKey, selectedList } = this.props;
+
+    if (listKey === selectedList) {
+      return (
+        <button
+          className="sidebar-list-button active"
+          onClick={this.handleClick}
+        >
+          {this.props.listName}
+        </button>
+      );
+    } else {
+      return (
+        <button className="sidebar-list-button" onClick={this.handleClick}>
+          {this.props.listName}
+        </button>
+      );
+    }
   }
 }
 

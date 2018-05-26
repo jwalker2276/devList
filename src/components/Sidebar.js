@@ -27,6 +27,7 @@ class Sidebar extends React.Component {
           <Sidebaritem
             key={newestList}
             listKey={newestList}
+            selectedList={this.props.selectedList}
             listName={this.props.listsCategories.lists[newestListNumber].title}
             loadSelectedList={this.props.loadSelectedList}
             addToViewCount={this.props.addToViewCount}
@@ -39,6 +40,7 @@ class Sidebar extends React.Component {
           <Sidebaritem
             key={mostPopularList}
             listKey={mostPopularList}
+            selectedList={this.props.selectedList}
             listName={
               this.props.listsCategories.lists[mostPopularListNumber].title
             }
@@ -52,6 +54,7 @@ class Sidebar extends React.Component {
             <Sidebaritem
               key={key}
               listKey={key}
+              selectedList={this.props.selectedList}
               listName={this.props.listsCategories.lists[key].title}
               loadSelectedList={this.props.loadSelectedList}
               addToViewCount={this.props.addToViewCount}

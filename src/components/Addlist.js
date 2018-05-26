@@ -42,7 +42,7 @@ class Addlist extends React.Component {
               name="list-name"
               ref={this.titleRef}
               type="text"
-              placeholder="List name"
+              placeholder="Enter name here"
             />
             <span className="item-text add-list-end">&#40;&#41;&#59;</span>
             <button className="syntax-btn" type="submit">

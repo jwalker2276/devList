@@ -1,5 +1,5 @@
 :root {
-  /* Font-Colors */
+  /* Font-Colors
   --font-comment: #1b998b;
   --font-class: #e17400;
   --font-itemTitle: #d62828;
@@ -8,15 +8,34 @@
   --font-equal: #fe7f2d;
   --font-text-light: #fbf5f3;
   --font-string: #1b998b;
+  --font-important: #d62828; */
+  /* List item colors */
+  /* --item-border-left: gray; */
+  /* Background colors */
+  /* --background-light: #3a506b;
+  --background-mid: #1c2541;
+  --background-dark: #0b132b; */
+  /* List title colors */
+  /* --list-title-bottom-border: #e17400; */
+
+  /* Font-Colors */
+  --font-comment: #1b998b;
+  --font-class: #e17400;
+  --font-itemTitle: #d62828;
+  --font-this: #d62828;
+  --font-period: #e17400;
+  --font-equal: #fe7f2d;
+  --font-text-light: #e0e1dd;
+  --font-string: #1b998b;
   --font-important: #d62828;
   /* List item colors */
-  --item-border-left: gray;
+  --item-border-left: #778da9;
   /* Background colors */
-  --background-light: #3a506b;
-  --background-mid: #1c2541;
-  --background-dark: #0b132b;
+  --background-light: #415a77;
+  --background-mid: #1b263b;
+  --background-dark: #0d1b2a;
   /* List title colors */
-  --list-title-bottom-border: #e17400;
+  --list-title-bottom-border: #e0e1dd;
 }
 
 html,
@@ -26,7 +45,7 @@ body {
 }
 
 body {
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Fira Sans", sans-serif;
   height: 100vh;
   width: 100vw;
@@ -93,15 +112,15 @@ p {
   cursor: pointer;
   border: none;
   font: inherit;
-  font-size: 0.8em;
-  background-color: var(--background-light);
+  font-size: 1em;
+  background-color: var(--background-dark);
   color: var(--font-text-light);
 }
 
 .edit-list-btn {
   grid-column: 2 / 3;
   background-image: url("/images/cog.svg");
-  background-color: var(--background-mid);
+  background-color: var(--background-dark);
   border: none;
   border-bottom: 2px solid var(--font-class);
   background-position: 50% 50%;
@@ -115,7 +134,7 @@ p {
   margin: 0;
   padding: 0;
   background-image: url("/images/cog.svg");
-  background-color: var(--background-light);
+  background-color: var(--background-dark);
   border: none;
   cursor: pointer;
   background-position: 50% 50%;
@@ -129,13 +148,49 @@ p {
   cursor: pointer;
   color: var(--font-text-light);
   font-size: 0.8em;
-  background-color: var(--background-light);
+  background-color: var(--background-dark);
   border: none;
 }
 
-.header-info-btn {
-  max-width: 35px;
-  max-height: 35px;
+.header-user-loggedin button {
+  background-color: var(--background-mid);
+}
+
+.header-user button {
+  background-color: var(--background-mid);
+}
+
+/* Input styles */
+
+input {
+  background-color: var(--background-dark);
+  border: 1px solid var(--background-light);
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  color: var(--font-text-light);
+  margin-right: 0.25em;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+/* Select styles */
+
+select {
+  background-color: var(--barkground-dark);
+  border: 1px solid var(--background-light);
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  color: var(--font-text-light);
+}
+
+[value~="paid"] {
+  background-color: var(--background-dark);
+  color: var(--font-important);
+}
+
+[value~="free"] {
+  background-color: var(--background-dark);
+  color: var(--font-text-light);
 }
 
 /* App styles */
@@ -171,8 +226,8 @@ p {
   align-items: center;
   grid-template-areas: "logo messages user";
   grid-template-columns: 1fr auto 1fr;
-  background-color: var(--background-light);
-  border-bottom: 1px solid var(--background-mid);
+  background-color: var(--background-mid);
+  border-bottom: 1px solid var(--background-light);
 }
 
 .header-logo {
@@ -212,15 +267,16 @@ p {
 
 .section-sidebar {
   grid-area: sidebar;
-  background-color: var(--background-dark);
+  background-color: var(--background-mid);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
 }
 
 .sidebar-section-title {
   text-transform: uppercase;
+  font-weight: normal;
   margin: 0;
-  padding: 5px 0;
+  padding: 2px 0;
   border-bottom: 1px solid var(--background-light);
   font-size: 1em;
 }
@@ -243,7 +299,7 @@ p {
   border: none;
   font: inherit;
   font-size: 0.8em;
-  background-color: var(--background-dark);
+  background-color: var(--background-mid);
   color: var(--font-text-light);
 }
 
@@ -255,7 +311,7 @@ p {
 
 .list-section {
   grid-area: lists;
-  background-color: var(--background-light);
+  background-color: var(--background-dark);
 }
 
 .list-box {
@@ -264,28 +320,29 @@ p {
 
 .list-tab-wrapper {
   display: grid;
-  background-color: var(--background-light);
-  border-bottom: 1px solid var(--background-dark);
+  background-color: var(--background-mid);
+  border-bottom: 1px solid var(--background-light);
   grid-template-columns: auto 10% 1fr;
 }
 
 .list-title-tab {
-  background-color: var(--background-mid);
+  background-color: var(--background-dark);
   border-bottom: 2px solid var(--font-class);
   grid-column: 1 / 2;
 }
 
 .list-title {
   color: var(--font-text-light);
+  font-weight: normal;
   margin: 0;
   text-align: center;
-  padding: 5px 10px;
+  padding: 2px 10px;
   font-size: 1em;
 }
 
 .list-items {
   display: grid;
-  grid-template-columns: 5% 1fr;
+  grid-template-columns: 0% 1fr;
 }
 
 .list-number {
@@ -302,7 +359,7 @@ p {
 }
 
 .list-item-box {
-  background-color: var(--background-light);
+  background-color: var(--background-dark);
   grid-column: 2 / -1;
   font-size: 0.9em;
 }
@@ -322,28 +379,29 @@ p {
 
 .user-section {
   grid-area: user;
-  background-color: var(--background-light);
-  border-left: 1px solid var(--background-mid);
+  background-color: var(--background-dark);
+  border-left: 1px solid var(--background-light);
 }
 
 .user-tab-wrapper {
   display: grid;
-  background-color: var(--background-light);
-  border-bottom: 1px solid var(--background-dark);
+  background-color: var(--background-mid);
+  border-bottom: 1px solid var(--background-light);
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
 }
 
 .user-title-tab {
-  background-color: var(--background-mid);
+  background-color: var(--background-dark);
   border-bottom: 2px solid var(--font-class);
 }
 
 .user-title {
   color: var(--font-text-light);
+  font-weight: normal;
   margin: 0;
   text-align: center;
-  padding: 5px 10px;
+  padding: 2px 10px;
   font-size: 1em;
 }
 
@@ -380,6 +438,10 @@ p {
 
 .add-list-form {
   margin: 0;
+}
+
+.add-list-form span.add-list-end {
+  padding-right: 5px;
 }
 
 /* Add list item styles */

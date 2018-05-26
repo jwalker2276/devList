@@ -61,7 +61,7 @@ class Addlistitem extends React.Component {
               name="item-title"
               ref={this.itemTitleRef}
               type="text"
-              placeholder="item title"
+              placeholder="Enter name here"
             />
             <span className="item-class">
               extends{" "}
@@ -88,7 +88,7 @@ class Addlistitem extends React.Component {
               name="item-link"
               ref={this.itemLinkRef}
               type="text"
-              placeholder="www.example.com"
+              placeholder="www.website-link.com"
             />
             <span className="item-text">;</span>
           </div>

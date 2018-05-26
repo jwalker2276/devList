@@ -100,8 +100,8 @@ class Addlistitem extends React.Component {
               <span className="item-equal"> = </span>
             </label>
             <select name="cost" ref={this.itemCostRef}>
-              <option value="paid">Paid</option>
               <option value="free">Free</option>
+              <option value="paid">Paid</option>
             </select>
             <span className="item-text">;</span>
           </div>

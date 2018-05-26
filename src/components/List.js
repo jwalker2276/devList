@@ -2,6 +2,7 @@ import React from "react";
 import Listitem from "./Listitem";
 import ListTitle from "./ListTitle";
 import { EditListButton } from "./EditButton";
+import { EmptyListComment } from "./ItemSyntax";
 // This component displays the lists and items from state
 
 class List extends React.Component {
@@ -43,6 +44,9 @@ class List extends React.Component {
               <ListTitle title={title} />
               <EditListButton flagListForEdit={this.props.flagListForEdit} />
             </div>
+            <div className="list-items">
+              <EmptyListComment />
+            </div>
           </div>
         );
       } else {
@@ -77,6 +81,9 @@ class List extends React.Component {
           <div className="list-box">
             <div className="list-tab-wrapper">
               <ListTitle title={title} />
+            </div>
+            <div className="list-items">
+              <EmptyListComment />
             </div>
           </div>
         );

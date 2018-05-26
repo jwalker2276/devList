@@ -356,7 +356,7 @@ class User extends React.Component {
         <section className="user-section">
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
-              <h5 className="user-title">User Setting.js</h5>
+              <h5 className="user-title">User Setting.dev</h5>
             </div>
           </div>
           <div className="user-login-btns-container">
@@ -375,7 +375,7 @@ class User extends React.Component {
         <section className="user-section">
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
-              <h3 className="user-title">User Setting.js</h3>
+              <h5 className="user-title">User Setting.dev</h5>
             </div>
           </div>
           <Editlist
@@ -394,7 +394,7 @@ class User extends React.Component {
         <section className="user-section">
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
-              <h3 className="user-title">User Setting.js</h3>
+              <h5 className="user-title">User Setting.dev</h5>
             </div>
           </div>
           <EditItem
@@ -413,7 +413,7 @@ class User extends React.Component {
       <section className="user-section">
         <div className="user-tab-wrapper">
           <div className="user-title-tab">
-            <h3 className="user-title">User Setting.js</h3>
+            <h5 className="user-title">User Setting.dev</h5>
           </div>
         </div>
         <Addlist addList={this.props.addList} userId={this.state.owner} />

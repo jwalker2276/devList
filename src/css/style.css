@@ -206,6 +206,20 @@ p {
   color: var(--font-class);
 }
 
+/* Animations */
+
+.fade-enter {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
 /* Input styles */
 
 input {
@@ -378,6 +392,11 @@ select {
 .list-items {
   display: grid;
   grid-template-columns: 0% 1fr;
+}
+
+/* Span for animations */
+.list-item-box span.fade {
+  position: relative;
 }
 
 .list-number {

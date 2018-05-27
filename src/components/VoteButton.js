@@ -15,7 +15,8 @@ class VoteButton extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick} className="vote-btn">
-        &#60; {this.props.action} &#47;&#62;
+        <span className="item-class">{this.props.action}</span>{" "}
+        <span className="item-text">&#40;&#41;&#59;</span>
       </button>
     );
   }

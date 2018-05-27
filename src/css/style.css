@@ -151,21 +151,38 @@ p {
 }
 
 .vote-btn {
-  text-transform: uppercase;
-  text-align: left;
   cursor: pointer;
-  color: var(--font-text-light);
-  font-size: 0.8em;
-  background-color: var(--background-dark);
   border: none;
+  font-size: 1em;
+  text-align: left;
+  background-color: var(--background-dark);
+  color: var(--font-text-light);
+  padding: 0;
+  transition: font-size 0.5s ease-in-out;
+}
+
+.vote-btn:hover {
+  font-size: 1.2em;
 }
 
 .header-user-loggedin button {
   background-color: var(--background-mid);
+  border-bottom: 1px solid var(--background-mid);
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+.header-user-loggedin button:hover {
+  border-bottom: 1px solid var(--font-class);
 }
 
 .header-user button {
   background-color: var(--background-mid);
+  border-bottom: 1px solid var(--background-mid);
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+.header-user button:hover {
+  border-bottom: 1px solid var(--font-class);
 }
 
 .sidebar-list-button {
@@ -178,9 +195,14 @@ p {
   font-size: 0.8em;
   background-color: var(--background-mid);
   color: var(--font-text-light);
+  transition: font-size 0.5s ease-in-out 0.15s;
 }
 
-.sidebar-list-button.active {
+.sidebar-list-button:hover {
+  font-size: 0.9em;
+}
+
+.sidebar-list-button.selected {
   color: var(--font-class);
 }
 
@@ -308,6 +330,7 @@ select {
 .sidebar-list-title {
   margin: 0;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 .sidebar-lists-container {

@@ -15,7 +15,7 @@ class Sidebaritem extends React.Component {
     if (listKey === selectedList) {
       return (
         <button
-          className="sidebar-list-button active"
+          className="sidebar-list-button selected"
           onClick={this.handleClick}
         >
           {this.props.listName}

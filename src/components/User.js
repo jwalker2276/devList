@@ -56,17 +56,6 @@ class User extends React.Component {
       }
     }
 
-    // user clicks logout button in header
-
-    // if the userpanel is closed and the userStatus is loggedIn
-    // logout
-
-    //Need to check the user panel status as prop
-    // Pass the status of the panel, opened or closed to user
-    //
-
-    // Stopped here
-
     // Lets check for a reported Item
     // Watching reportedItem prop from app.js
     // If no item is reported the value will be null

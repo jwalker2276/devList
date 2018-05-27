@@ -332,7 +332,7 @@ class App extends React.Component {
     console.log("from app. Received command = " + command);
 
     const userPanelClosed = "app";
-    const userPanelOpened = "app-user-opened";
+    const userPanelOpened = "app opened";
 
     if (command === "openUserPanel") {
       this.setState({ appClasses: userPanelOpened });

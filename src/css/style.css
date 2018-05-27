@@ -255,17 +255,6 @@ select {
 
 /* App styles */
 
-.app-user-opened {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 20% 1fr 1fr;
-  grid-template-rows: 4% 1fr;
-  grid-template-areas:
-    "header header header"
-    "sidebar lists user";
-}
-
 .app {
   height: 100%;
   width: 100%;
@@ -276,6 +265,10 @@ select {
     "header header header"
     "sidebar lists user";
   overflow: hidden;
+}
+
+.app.opened {
+  grid-template-columns: 20% 1fr 1fr;
 }
 
 /* Header styles */

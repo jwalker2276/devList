@@ -130,6 +130,15 @@ p {
   background-color: var(--background-mid);
   margin: 0 25% 20px 25%;
   border-radius: 5px;
+  transition: background-color 0.25s ease-in;
+}
+
+.syntax-btn.user-login-btns:hover {
+  background: var(--background-light);
+}
+
+.syntax-btn.user-login-btns:focus {
+  outline: var(--font-class) auto 5px;
 }
 
 .edit-list-btn {
@@ -172,6 +181,10 @@ p {
   font-size: 1.2em;
 }
 
+.vote-btn:focus {
+  outline: var(--font-class) auto 5px;
+}
+
 .header-user-loggedin button {
   background-color: var(--background-mid);
   border-bottom: 1px solid var(--background-mid);
@@ -182,6 +195,10 @@ p {
   border-bottom: 1px solid var(--font-class);
 }
 
+.header-user-loggedin button:focus {
+  outline: var(--font-class) auto 5px;
+}
+
 .header-user button {
   background-color: var(--background-mid);
   border-bottom: 1px solid var(--background-mid);
@@ -190,6 +207,10 @@ p {
 
 .header-user button:hover {
   border-bottom: 1px solid var(--font-class);
+}
+
+.header-user button:focus {
+  outline: var(--font-class) auto 5px;
 }
 
 .sidebar-list-button {
@@ -208,9 +229,92 @@ p {
 .sidebar-list-button:hover {
   font-size: 0.9em;
 }
+.sidebar-list-button:focus {
+  outline: var(--font-class) auto 5px;
+}
 
 .sidebar-list-button.selected {
   color: var(--font-class);
+}
+
+/* Add list buttono */
+.add-list-form button {
+  transition: color 0.25s ease-in;
+  animation: bounce 2s linear 5s alternate infinite none running;
+}
+
+.add-list-form button:hover {
+  color: var(--font-class);
+}
+
+.add-list-form button:focus {
+  outline: var(--font-class) auto 5px;
+}
+
+/* Add to list button */
+.add-listitem-div button {
+  transition: color 0.25s ease-in;
+  animation: bounce 2s linear 5s normal infinite none running;
+  text-align: left;
+}
+
+.add-listitem-div button:hover {
+  color: var(--font-class);
+}
+
+.add-listitem-div button:focus {
+  outline: var(--font-class) auto 5px;
+}
+
+/* Edit list done button */
+.edit-list-div button {
+  transition: color 0.25s ease-in;
+  animation: bounce 2s linear 5s normal infinite none running;
+}
+
+.edit-list-div button:hover {
+  color: var(--font-class);
+}
+
+.edit-list-div button:focus {
+  outline: var(--font-class) auto 5px;
+}
+
+/* Edit list item done button */
+.edit-listitem-div button {
+  transition: color 0.25s ease-in;
+  animation: bounce 2s linear 5s normal infinite none running;
+  text-align: left;
+}
+
+.edit-listitem-div button:hover {
+  color: var(--font-class);
+}
+
+.edit-listitem-div button:focus {
+  outline: var(--font-class) auto 5px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  75% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.log-out-btn {
+  opacity: 0.5;
 }
 
 /* Animations */
@@ -264,11 +368,14 @@ select {
 
 .app {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  height: 100%;
 }
 
 .app-main {
   width: 100vw;
+  height: 95%;
   display: flex;
 }
 
@@ -276,7 +383,8 @@ select {
 
 .header-section {
   width: 100vw;
-  height: 5vh;
+  height: 5%;
+  padding: 0 25px;
   display: grid;
   align-items: center;
   grid-template-areas: "logo messages user";
@@ -321,9 +429,9 @@ select {
 /* Sidebar styles */
 
 .section-sidebar {
-  min-width: 26vw;
+  min-width: 250px;
   width: 26vw;
-  height: 100vh;
+  max-width: 26vw;
   background-color: var(--background-mid);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
@@ -435,6 +543,7 @@ select {
   background-color: var(--background-dark);
   border-left: 1px solid var(--background-light);
   transition: width 0.5s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .section-user.opened {
@@ -506,7 +615,6 @@ select {
 
 .add-listitem-div {
   padding: 0 5px;
-  font-size: 0.9em;
 }
 
 .add-listitem-div p:first-of-type {

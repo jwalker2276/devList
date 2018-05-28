@@ -334,7 +334,7 @@ class User extends React.Component {
   render() {
     // Log out button
     const logout = (
-      <button className="syntax-btn" onClick={this.logout}>
+      <button className="syntax-btn log-out-btn" onClick={this.logout}>
         Log Out
       </button>
     );

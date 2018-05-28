@@ -1,21 +1,23 @@
 import React from "react";
 import List from "./List.js";
 
-// This stateless functional component is the parent element for a list component.
-
-const ListsSection = props => (
-  <section className="list-section">
-    <List
-      lists={props.lists}
-      selectedListName={props.selectedListName}
-      itemInteraction={props.itemInteraction}
-      editList={props.editList}
-      userId={props.userId}
-      flagListForEdit={props.flagListForEdit}
-      flagItemForEdit={props.flagItemForEdit}
-      userVoteCount={props.userVoteCount}
-    />
-  </section>
-);
+class ListsSection extends React.Component {
+  render() {
+    return (
+      <section className="section-list">
+        <List
+          lists={this.props.lists}
+          selectedListName={this.props.selectedListName}
+          itemInteraction={this.props.itemInteraction}
+          editList={this.props.editList}
+          userId={this.props.userId}
+          flagListForEdit={this.props.flagListForEdit}
+          flagItemForEdit={this.props.flagItemForEdit}
+          userVoteCount={this.props.userVoteCount}
+        />
+      </section>
+    );
+  }
+}
 
 export default ListsSection;

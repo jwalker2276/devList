@@ -44,13 +44,20 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body {
   font-size: 18px;
   font-family: "Fira Sans", sans-serif;
   line-height: 2;
+  background-color: var(--background-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 #main {
@@ -256,25 +263,20 @@ select {
 /* App styles */
 
 .app {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 20% 1fr 0%;
-  grid-template-rows: 4% 1fr;
-  grid-template-areas:
-    "header header header"
-    "sidebar lists user";
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.app.opened {
-  grid-template-columns: 20% 1fr 1fr;
+.app-main {
+  width: 100vw;
+  display: flex;
 }
 
 /* Header styles */
 
 .header-section {
-  grid-area: header;
+  width: 100vw;
+  height: 5vh;
   display: grid;
   align-items: center;
   grid-template-areas: "logo messages user";
@@ -319,7 +321,9 @@ select {
 /* Sidebar styles */
 
 .section-sidebar {
-  grid-area: sidebar;
+  min-width: 26vw;
+  width: 26vw;
+  height: 100vh;
   background-color: var(--background-mid);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
@@ -351,9 +355,10 @@ select {
 
 /* List styles */
 
-.list-section {
-  grid-area: lists;
+.section-list {
+  width: 100%;
   background-color: var(--background-dark);
+  transition: width 0.5s ease-in;
 }
 
 .list-box {
@@ -424,10 +429,17 @@ select {
 
 /* User styles */
 
-.user-section {
-  grid-area: user;
+.section-user {
+  width: 0;
+  opacity: 0;
   background-color: var(--background-dark);
   border-left: 1px solid var(--background-light);
+  transition: width 0.5s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+}
+
+.section-user.opened {
+  width: 100vw;
+  opacity: 1;
 }
 
 .user-tab-wrapper {

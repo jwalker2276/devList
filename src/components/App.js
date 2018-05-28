@@ -22,7 +22,7 @@ class App extends React.Component {
     editListFlag: false,
     editItemFlag: null,
     reportedItem: null,
-    appClasses: "app"
+    styleClass: "section-user"
   };
 
   //********************
@@ -331,15 +331,15 @@ class App extends React.Component {
   uiCommands = command => {
     console.log("from app. Received command = " + command);
 
-    const userPanelClosed = "app";
-    const userPanelOpened = "app opened";
+    const userPanelClosed = "section-user";
+    const userPanelOpened = "section-user opened";
 
     if (command === "openUserPanel") {
-      this.setState({ appClasses: userPanelOpened });
+      this.setState({ styleClass: userPanelOpened });
     }
 
     if (command === "closeUserPanel") {
-      this.setState({ appClasses: userPanelClosed });
+      this.setState({ styleClass: userPanelClosed });
     }
   };
 
@@ -397,48 +397,51 @@ class App extends React.Component {
   // React render
   render() {
     return (
-      <div className={this.state.appClasses}>
+      <div className="app">
         <Header
           userId={this.state.user.uid}
           userVotes={this.state.user.votes}
           uiCommands={this.uiCommands}
         />
-        <Sidebar
-          selectedList={this.state.user.selectedList}
-          newestList={this.findNewestList()}
-          mostPopularList={this.findMostPopularList()}
-          listsCategories={this.state}
-          loadSelectedList={this.loadSelectedList}
-          addToViewCount={this.addToViewCount}
-        />
-        <ListsSection
-          selectedListName={this.state.user.selectedList}
-          lists={this.state.lists}
-          itemInteraction={this.itemInteraction}
-          editList={this.editList}
-          userId={this.state.user.uid}
-          flagListForEdit={this.flagListForEdit}
-          flagItemForEdit={this.flagItemForEdit}
-          userVoteCount={this.state.user.votes}
-        />
-        <User
-          state={this.state}
-          addList={this.addList}
-          addListItem={this.addListItem}
-          loadStarterList={this.loadStarterList}
-          setUserId={this.setUserId}
-          editListFlag={this.state.editListFlag}
-          editItemFlag={this.state.editItemFlag}
-          editList={this.editList}
-          editListItem={this.editListItem}
-          flagListForEdit={this.flagListForEdit}
-          flagItemForEdit={this.flagItemForEdit}
-          updateVotes={this.updateVotes}
-          userVotes={this.state.user.votes}
-          reportedItem={this.state.reportedItem}
-          resetReportedItem={this.resetReportedItem}
-          uiCommands={this.uiCommands}
-        />
+        <div className="app-main">
+          <Sidebar
+            selectedList={this.state.user.selectedList}
+            newestList={this.findNewestList()}
+            mostPopularList={this.findMostPopularList()}
+            listsCategories={this.state}
+            loadSelectedList={this.loadSelectedList}
+            addToViewCount={this.addToViewCount}
+          />
+          <ListsSection
+            selectedListName={this.state.user.selectedList}
+            lists={this.state.lists}
+            itemInteraction={this.itemInteraction}
+            editList={this.editList}
+            userId={this.state.user.uid}
+            flagListForEdit={this.flagListForEdit}
+            flagItemForEdit={this.flagItemForEdit}
+            userVoteCount={this.state.user.votes}
+          />
+          <User
+            state={this.state}
+            addList={this.addList}
+            addListItem={this.addListItem}
+            loadStarterList={this.loadStarterList}
+            setUserId={this.setUserId}
+            editListFlag={this.state.editListFlag}
+            editItemFlag={this.state.editItemFlag}
+            editList={this.editList}
+            editListItem={this.editListItem}
+            flagListForEdit={this.flagListForEdit}
+            flagItemForEdit={this.flagItemForEdit}
+            updateVotes={this.updateVotes}
+            userVotes={this.state.user.votes}
+            reportedItem={this.state.reportedItem}
+            resetReportedItem={this.resetReportedItem}
+            uiCommands={this.uiCommands}
+            userClass={this.state.userClass}
+          />
+        </div>
       </div>
     );
   }

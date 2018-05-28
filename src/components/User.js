@@ -342,7 +342,7 @@ class User extends React.Component {
     // Check to see if the user is logged in
     if (!this.state.owner) {
       return (
-        <section className="user-section">
+        <section className={this.props.state.styleClass}>
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
               <h5 className="user-title">User Setting.dev</h5>
@@ -361,7 +361,7 @@ class User extends React.Component {
     // Check to see if the user wants to edit a list
     if (this.props.editListFlag) {
       return (
-        <section className="user-section">
+        <section className={this.props.state.styleClass}>
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
               <h5 className="user-title">User Setting.dev</h5>
@@ -380,7 +380,7 @@ class User extends React.Component {
       // Get key for editItem
       const itemKey = this.props.editItemFlag;
       return (
-        <section className="user-section">
+        <section className={this.props.state.styleClass}>
           <div className="user-tab-wrapper">
             <div className="user-title-tab">
               <h5 className="user-title">User Setting.dev</h5>
@@ -399,7 +399,7 @@ class User extends React.Component {
 
     // If logged in show features
     return (
-      <section className="user-section">
+      <section className={this.props.state.styleClass}>
         <div className="user-tab-wrapper">
           <div className="user-title-tab">
             <h5 className="user-title">User Setting.dev</h5>

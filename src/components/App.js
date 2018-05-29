@@ -3,6 +3,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import ListsSection from "./ListsSection";
 import User from "./User";
+import Footer from "./Footer";
 import starterLists from "../starter-list";
 // import firebase from "firebase";
 import base from "../base";
@@ -442,6 +443,7 @@ class App extends React.Component {
             userClass={this.state.userClass}
           />
         </div>
+        <Footer />
       </div>
     );
   }

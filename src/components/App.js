@@ -342,6 +342,19 @@ class App extends React.Component {
     if (command === "closeUserPanel") {
       this.setState({ styleClass: userPanelClosed });
     }
+
+    // Check to see if user want to see info
+    // This is also the default list shown.
+    if (command === "info") {
+      // Copy current user state
+      const user = { ...this.state.user };
+
+      // Change selected list back to null to display info
+      user.selectedList = null;
+
+      // Merge state
+      this.setState({ user: user });
+    }
   };
 
   //*****************************

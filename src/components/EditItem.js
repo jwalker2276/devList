@@ -25,7 +25,7 @@ class EditItem extends React.Component {
     console.log(selectedListItem);
     return (
       <div className="edit-listitem-div">
-        <p className="item-comment">// Change your items values</p>
+        <p className="item-comment">{"//"} Change your items values</p>
         <div className="edit-listitem-grid">
           <div className=" add-listitem-line-one">
             <label>

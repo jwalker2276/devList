@@ -51,7 +51,7 @@ class Addlistitem extends React.Component {
 
     return (
       <div className="add-listitem-div">
-        <p className="item-comment">// Add to this list</p>
+        <p className="item-comment">{"//"} Add to this list</p>
         <form className="add-listitem-form" onSubmit={this.createListItem}>
           <div className=" add-listitem-line-one">
             <label>

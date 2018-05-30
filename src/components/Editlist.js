@@ -14,7 +14,7 @@ class Editlist extends React.Component {
 
     return (
       <div className="edit-list-div">
-        <p className="item-comment">// Edit your list</p>
+        <p className="item-comment">{"//"} Edit your list</p>
         <div className="edit-list-grid">
           <p className="item-class">
             const <span className="item-text">list</span>

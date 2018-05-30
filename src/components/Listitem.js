@@ -17,7 +17,6 @@ class Listitem extends React.Component {
       name,
       link,
       cost,
-      alt,
       totalVotes,
       owner,
       objKey
@@ -57,7 +56,9 @@ class Listitem extends React.Component {
             <ClosingBracket />
             {/* Can vote */}
             {/* Can edit */}
-            <p className="item-comment">// Vote here or don't we don't care.</p>
+            <p className="item-comment">
+              {"//"} Vote here or don't we don't care.
+            </p>
             <div className="item-voter">
               <VoteButton
                 action="vote-up"
@@ -93,7 +94,9 @@ class Listitem extends React.Component {
             <ItemVotes totalVotes={totalVotes} />
             <ClosingBracket />
             {/* Can vote */}
-            <p className="item-comment">// Vote here or don't we don't care.</p>
+            <p className="item-comment">
+              {"//"} Vote here or don't we don't care.
+            </p>
             <div className="item-voter">
               <VoteButton
                 action="vote-up"

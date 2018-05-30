@@ -1,4 +1,5 @@
 import React from "react";
+import { CommentEnd } from "./ItemSyntax";
 
 //This component handles adding new lists from the user.
 
@@ -27,7 +28,7 @@ class Addlist extends React.Component {
   render() {
     return (
       <div className="add-list-div">
-        <p className="item-comment">// Add your new list</p>
+        <p className="item-comment">{"//"} Add your new list</p>
         <div className="add-list-grid">
           <p className="item-class">
             const <span className="item-text">list</span>
@@ -50,6 +51,7 @@ class Addlist extends React.Component {
             </button>
           </form>
         </div>
+        <CommentEnd />
       </div>
     );
   }

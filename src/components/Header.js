@@ -66,7 +66,12 @@ class Header extends React.Component {
 
     return (
       <header className="header-section">
-        <img className="header-logo" src="../images/code.svg" alt="logo" />
+        <div className="header-logo">
+          <h3 className="item-class">
+            <span className="item-comment">{"<"}</span> DevList{" "}
+            <span className="item-comment">{"/>"}</span>
+          </h3>
+        </div>
         <div className="header-messages">{votesInfo}</div>
         {buttonGroup}
       </header>

@@ -145,13 +145,10 @@ p {
 
 .edit-list-btn {
   grid-column: 2 / 3;
-  background-image: url("/images/cog.svg");
+  /* background-image: url("/images/cog.svg"); */
   background-color: var(--background-dark);
   border: none;
   border-bottom: 2px solid var(--font-class);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
 }
 
 .edit-item-btn {
@@ -159,13 +156,27 @@ p {
   width: 30px;
   margin: 0;
   padding: 0;
-  background-image: url("/images/cog.svg");
   background-color: var(--background-dark);
   border: none;
   cursor: pointer;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 25px 25px;
+}
+
+.cog {
+  fill: var(--font-text-light);
+  transition: fill 0.25s linear;
+}
+
+.cog:hover {
+  fill: var(--font-class);
+}
+
+.cog:focus {
+  fill: var(--font-comment);
+  outline: var(--font-comment) auto 5px;
+}
+
+.edit-list-btn svg {
+  max-width: 30px;
 }
 
 .vote-btn {

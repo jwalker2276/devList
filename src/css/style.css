@@ -339,6 +339,13 @@ p {
   opacity: 0.5;
 }
 
+.list-expand-btn {
+  width: 15%;
+  height: auto;
+  background-color: var(--background-mid);
+  border: none;
+}
+
 /* Animations */
 
 .fade-enter {
@@ -398,7 +405,7 @@ select {
 
 .app-main {
   width: 100vw;
-  height: 95%;
+  height: 100%;
   display: flex;
   box-shadow: 0px -2px 3px 1px var(--boxshadow-dark);
 }
@@ -481,6 +488,7 @@ select {
 
 .section-sidebar {
   min-width: 250px;
+  height: 30%;
   overflow: auto;
   background-color: var(--background-mid);
   color: var(--font-text-light);
@@ -520,10 +528,25 @@ select {
   font-weight: bold;
 }
 
+.sidebar-lists-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.sidebar-padding {
+  padding-left: 25px;
+}
+
+.sidebar-mobile {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 850px) {
   .section-sidebar {
     overflow: hidden;
     order: 1;
+    height: 22%;
   }
 
   .sidebar-list-container {
@@ -532,16 +555,8 @@ select {
 
   .sidebar-section-title.sidebar-padding {
     padding-left: 2px;
+    height: 100%;
   }
-}
-
-.sidebar-lists-container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.sidebar-padding {
-  padding-left: 25px;
 }
 
 /* List scroll bar styles */

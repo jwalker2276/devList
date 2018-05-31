@@ -8,6 +8,15 @@ class Sidebar extends React.Component {
     const { newestList } = this.props;
     const { mostPopularList } = this.props;
 
+    let mobile = false;
+
+    // Check for mobile device.
+    if (this.props.windowSize === "mobile") {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     // Wait for correct value
     if (isNaN(newestList)) {
       return null;
@@ -17,9 +26,30 @@ class Sidebar extends React.Component {
     let newestListNumber = Number(newestList);
     let mostPopularListNumber = Number(mostPopularList);
 
+    const sideBarTitle = mobile ? (
+      <div className="sidebar-mobile">
+        <h5 className="sidebar-section-title sidebar-padding">
+          List Explorer Mobile
+        </h5>
+        <button
+          className="list-expand-btn"
+          // onClick={() => props.}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+            <path
+              className="list-btn"
+              d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
+            />
+          </svg>
+        </button>
+      </div>
+    ) : (
+      <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
+    );
+
     return (
       <section className="section-sidebar">
-        <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
+        {sideBarTitle}
         <div className="sidebar-list-container">
           <p className="sidebar-list-title sidebar-padding">
             &#8895; Newest List

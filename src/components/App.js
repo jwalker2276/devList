@@ -447,6 +447,7 @@ class App extends React.Component {
             listsCategories={this.state}
             loadSelectedList={this.loadSelectedList}
             addToViewCount={this.addToViewCount}
+            windowSize={this.state.windowSize}
           />
           <ListsSection
             selectedListName={this.state.user.selectedList}

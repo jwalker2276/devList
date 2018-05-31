@@ -20,46 +20,52 @@ class Sidebar extends React.Component {
     return (
       <section className="section-sidebar">
         <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
-        <p className="sidebar-list-title sidebar-padding">
-          &#8895; Newest List
-        </p>
-        <div className="sidebar-lists-container sidebar-padding">
-          <Sidebaritem
-            key={newestList}
-            listKey={newestList}
-            selectedList={this.props.selectedList}
-            listName={this.props.listsCategories.lists[newestListNumber].title}
-            loadSelectedList={this.props.loadSelectedList}
-            addToViewCount={this.props.addToViewCount}
-          />
-        </div>
-        <p className="sidebar-list-title sidebar-padding">
-          &#8895; Most Popular List
-        </p>
-        <div className="sidebar-lists-container sidebar-padding">
-          <Sidebaritem
-            key={mostPopularList}
-            listKey={mostPopularList}
-            selectedList={this.props.selectedList}
-            listName={
-              this.props.listsCategories.lists[mostPopularListNumber].title
-            }
-            loadSelectedList={this.props.loadSelectedList}
-            addToViewCount={this.props.addToViewCount}
-          />
-        </div>
-        <p className="sidebar-list-title sidebar-padding">&#8895; Categories</p>
-        <div className="sidebar-lists-container sidebar-padding">
-          {Object.keys(this.props.listsCategories.lists).map(key => (
+        <div className="sidebar-list-container">
+          <p className="sidebar-list-title sidebar-padding">
+            &#8895; Newest List
+          </p>
+          <div className="sidebar-lists-container sidebar-padding">
             <Sidebaritem
-              key={key}
-              listKey={key}
+              key={newestList}
+              listKey={newestList}
               selectedList={this.props.selectedList}
-              listName={this.props.listsCategories.lists[key].title}
+              listName={
+                this.props.listsCategories.lists[newestListNumber].title
+              }
               loadSelectedList={this.props.loadSelectedList}
               addToViewCount={this.props.addToViewCount}
             />
-          ))}
+          </div>
+          <p className="sidebar-list-title sidebar-padding">
+            &#8895; Most Popular List
+          </p>
+          <div className="sidebar-lists-container sidebar-padding">
+            <Sidebaritem
+              key={mostPopularList}
+              listKey={mostPopularList}
+              selectedList={this.props.selectedList}
+              listName={
+                this.props.listsCategories.lists[mostPopularListNumber].title
+              }
+              loadSelectedList={this.props.loadSelectedList}
+              addToViewCount={this.props.addToViewCount}
+            />
+          </div>
+          <p className="sidebar-list-title sidebar-padding">
+            &#8895; Categories
+          </p>
+          <div className="sidebar-lists-container sidebar-padding">
+            {Object.keys(this.props.listsCategories.lists).map(key => (
+              <Sidebaritem
+                key={key}
+                listKey={key}
+                selectedList={this.props.selectedList}
+                listName={this.props.listsCategories.lists[key].title}
+                loadSelectedList={this.props.loadSelectedList}
+                addToViewCount={this.props.addToViewCount}
+              />
+            ))}
+          </div>
         </div>
       </section>
     );

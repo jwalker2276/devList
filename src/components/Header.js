@@ -57,25 +57,46 @@ class Header extends React.Component {
 
     // Vote info templete
     const votesInfo = hasVotes ? (
-      <p>You can vote on {this.props.userVotes} items right now.</p>
+      <p>{this.props.userVotes} votes left.</p>
     ) : isLoggedIn ? (
       <p>Check back tomorrow to vote again.</p>
     ) : (
-      <p>Log in to add something everyone needs to know about.</p>
+      <p>Log in to add to the list.</p>
     );
 
-    return (
-      <header className="header-section">
-        <div className="header-logo">
-          <h3 className="item-class">
-            <span className="item-comment">{"<"}</span> DevList{" "}
-            <span className="item-comment">{"/>"}</span>
-          </h3>
-        </div>
-        <div className="header-messages">{votesInfo}</div>
-        {buttonGroup}
-      </header>
-    );
+    if (this.props.windowSize === "mobile") {
+      return (
+        <header className="header-section">
+          <div className="header-logo">
+            <h3 className="item-class">
+              <span className="item-comment">{"<"}</span> DevList{" "}
+              <span className="item-comment">{"/>"}</span>
+            </h3>
+          </div>
+          <div className="header-user-loggedin">
+            <button
+              className="syntax-btn"
+              onClick={() => this.props.uiCommands("info")}
+            >
+              Info
+            </button>
+          </div>
+        </header>
+      );
+    } else {
+      return (
+        <header className="header-section">
+          <div className="header-logo">
+            <h3 className="item-class">
+              <span className="item-comment">{"<"}</span> DevList{" "}
+              <span className="item-comment">{"/>"}</span>
+            </h3>
+          </div>
+          <div className="header-messages">{votesInfo}</div>
+          {buttonGroup}
+        </header>
+      );
+    }
   }
 }
 

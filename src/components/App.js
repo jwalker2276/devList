@@ -23,7 +23,8 @@ class App extends React.Component {
     editListFlag: false,
     editItemFlag: null,
     reportedItem: null,
-    styleClass: "section-user"
+    styleClass: "section-user",
+    windowSize: null
   };
 
   //********************
@@ -44,12 +45,16 @@ class App extends React.Component {
       context: this,
       state: "lists"
     });
+
+    // Add resize event
+    window.addEventListener("resize", this.updateWindowSize);
+    // Get initial size
+    this.updateWindowSize();
   }
 
   // Lifecycle method
   // Checking for change
   componentDidUpdate() {
-    console.log("component did update");
     //Update local storage
     localStorage.setItem(
       "selectedList",
@@ -71,7 +76,23 @@ class App extends React.Component {
   // Called when unmounted
   componentWillUnmount() {
     base.removeBinding(this.ref);
+
+    window.removeEventListener("resize", this.updateWindowSize);
   }
+
+  //******************************
+  // Check size of browser
+  //******************************
+
+  // Update state with current browser width
+  updateWindowSize = () => {
+    // Check size and determine application.
+    if (window.innerWidth > 0 && window.innerWidth < 851) {
+      this.setState({ windowSize: "mobile" });
+    } else {
+      this.setState({ windowSize: "desktop" });
+    }
+  };
 
   //******************************
   // Adding and modifying methods
@@ -416,6 +437,7 @@ class App extends React.Component {
           userId={this.state.user.uid}
           userVotes={this.state.user.votes}
           uiCommands={this.uiCommands}
+          windowSize={this.state.windowSize}
         />
         <div className="app-main">
           <Sidebar

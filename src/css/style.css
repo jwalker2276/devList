@@ -80,6 +80,7 @@ p {
 
 .item-comment {
   color: var(--font-comment);
+  font-style: italic;
 }
 
 .item-class {
@@ -130,13 +131,16 @@ p {
 /* Login Buttons */
 .syntax-btn.user-login-btns {
   background-color: var(--background-mid);
+  color: var(--font-text-light);
   margin: 0 25% 20px 25%;
   border-radius: 5px;
-  transition: background-color 0.25s ease-in;
+  transition: background-color 0.25s ease-in, color 0.25s ease-in;
 }
 
 .syntax-btn.user-login-btns:hover {
-  background: var(--background-light);
+  background: var(--font-class);
+  color: var(--background-dark);
+  font-weight: 700;
 }
 
 .syntax-btn.user-login-btns:focus {
@@ -407,7 +411,6 @@ select {
   width: 100vw;
   height: 100%;
   display: flex;
-  box-shadow: 0px -2px 3px 1px var(--boxshadow-dark);
 }
 
 @media screen and (max-width: 850px) {
@@ -488,12 +491,11 @@ select {
 
 .section-sidebar {
   min-width: 250px;
-  height: 30%;
+  height: 100%;
   overflow: auto;
   background-color: var(--background-mid);
   color: var(--font-text-light);
   border-right: 1px solid var(--background-light);
-  box-shadow: inset 0px 0px 5px 1px var(--background-light);
 }
 
 .section-sidebar::-webkit-scrollbar {
@@ -517,8 +519,7 @@ select {
   font-weight: normal;
   margin: 0;
   padding: 2px 0;
-  /* border-bottom: 1px solid var(--background-light); */
-  box-shadow: 0px 3px 3px 1px var(--boxshadow-dark);
+  border-bottom: 1px solid var(--background-light);
   font-size: 1em;
 }
 
@@ -546,7 +547,7 @@ select {
   .section-sidebar {
     overflow: hidden;
     order: 1;
-    height: 22%;
+    height: 100%;
   }
 
   .sidebar-list-container {
@@ -556,6 +557,7 @@ select {
   .sidebar-section-title.sidebar-padding {
     padding-left: 2px;
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -603,7 +605,6 @@ select {
   background-color: var(--background-mid);
   border-bottom: 1px solid var(--background-light);
   grid-template-columns: auto 10% 1fr;
-  box-shadow: inset 0px 0px 5px 1px var(--boxshadow-dark);
 }
 
 .list-title-tab {
@@ -799,7 +800,6 @@ select {
   border-top: 1px solid var(--background-light);
   background-color: var(--background-mid);
   color: var(--font-text-light);
-  box-shadow: 0px -3px 3px 1px var(--boxshadow-dark);
   text-align: center;
   font-size: 0.75em;
 }

@@ -412,7 +412,7 @@ class User extends React.Component {
           userId={this.state.owner}
         />
         {logout}
-        <button onClick={this.props.loadStarterList}>Load Starter List</button>
+        {/* <button onClick={this.props.loadStarterList}>Load Starter List</button> */}
       </section>
     );
   }

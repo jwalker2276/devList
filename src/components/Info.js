@@ -65,7 +65,7 @@ const Info = () => (
         </p>
         <p className="item-text">
           I will be watching the list, but if I miss something email me at
-          devlist@gmail.com
+          devlistapp@gmail.com
         </p>.
       </div>
     </div>

@@ -22,7 +22,6 @@ class EditItem extends React.Component {
 
     // Get the selected item to edit
     const selectedListItem = lists[listKey].items[itemKey];
-    console.log(selectedListItem);
     return (
       <div className="edit-listitem-div">
         <p className="item-comment">{"//"} Change your items values</p>

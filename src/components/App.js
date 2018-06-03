@@ -356,8 +356,6 @@ class App extends React.Component {
 
   // The method receives a command from buttons within the header.
   uiCommands = command => {
-    console.log("from app. Received command = " + command);
-
     const userPanelClosed = "section-user";
     const userPanelOpened = "section-user opened";
 

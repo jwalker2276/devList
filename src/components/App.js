@@ -106,8 +106,14 @@ class App extends React.Component {
     //Get number of last list
     for (let i in lists) {
       var listNumber = i;
+      console.log("listnumber is :" + listNumber);
       //Just want the first obj
       break;
+    }
+
+    // Check if this is the first list added
+    if (isNaN(listNumber)) {
+      listNumber = 10000000;
     }
 
     // Add new list to the lists collection

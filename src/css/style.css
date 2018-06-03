@@ -471,7 +471,7 @@ select {
 /* Sidebar styles */
 
 .section-sidebar {
-  min-width: 250px;
+  min-width: 300px;
   height: 100%;
   overflow: auto;
   background-color: var(--background-mid);

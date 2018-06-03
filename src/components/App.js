@@ -5,7 +5,6 @@ import ListsSection from "./ListsSection";
 import User from "./User";
 import Footer from "./Footer";
 import starterLists from "../starter-list";
-// import firebase from "firebase";
 import base from "../base";
 import { formatName } from "../helper-functions";
 

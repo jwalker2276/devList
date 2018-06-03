@@ -31,7 +31,7 @@ body {
 }
 
 body {
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Fira Sans", sans-serif;
   line-height: 2;
   background-color: var(--background-dark);
@@ -50,6 +50,41 @@ body {
 
 p {
   margin: 0 0.5em;
+}
+
+/* Input styles */
+
+input {
+  background-color: var(--background-dark);
+  box-shadow: inset 0px 0px 2px 0px var(--font-important);
+  border: 1px solid var(--background-light);
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  color: var(--font-text-light);
+  margin-right: 0.25em;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+/* Select styles */
+
+select {
+  background-color: var(--barkground-dark);
+  border: 1px solid var(--background-light);
+  box-shadow: inset 0px 0px 2px 0px var(--font-important);
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  color: var(--font-text-light);
+}
+
+[value~="paid"] {
+  background-color: var(--background-dark);
+  color: var(--font-important);
+}
+
+[value~="free"] {
+  background-color: var(--background-dark);
+  color: var(--font-text-light);
 }
 
 /* Color styles */
@@ -190,7 +225,7 @@ p {
 }
 
 .header-user-loggedin button:hover,
-:focus {
+.header-user-loggedin button:focus {
   border-bottom: 1px solid var(--font-class);
   /* Might have a scope issue here? */
   font-size: 1em !important;
@@ -207,7 +242,7 @@ p {
 }
 
 .header-user button:hover,
-:focus {
+.header-user button:focus {
   border-bottom: 1px solid var(--font-class);
   /* Might have a scope issue here? */
   font-size: 1em !important;
@@ -224,15 +259,13 @@ p {
   cursor: pointer;
   border: none;
   font: inherit;
-  font-size: 0.8em;
+  font-size: 0.9em;
   background-color: var(--background-mid);
   color: var(--font-text-light);
-  transition: font-size 0.5s ease-in-out 0.15s;
 }
 
 .sidebar-list-button:hover,
-:focus {
-  font-size: 0.8em;
+.sidebar-list-button:focus {
   color: var(--font-class);
 }
 
@@ -247,7 +280,7 @@ p {
 /* Add list button */
 .add-list-form button {
   transition: color 0.25s ease-in;
-  animation: bounce 2s linear 5s alternate infinite none running;
+  animation: colorChange 5s linear 5s alternate infinite none running;
 }
 
 .add-list-form button:hover {
@@ -261,8 +294,9 @@ p {
 /* Add to list button */
 .add-listitem-div button {
   transition: color 0.25s ease-in;
-  animation: bounce 2s linear 5s normal infinite none running;
+  animation: colorChange 5s linear 5s normal infinite none running;
   text-align: left;
+  padding: 0;
 }
 
 .add-listitem-div button:hover {
@@ -276,7 +310,7 @@ p {
 /* Edit list done button */
 .edit-list-div button {
   transition: color 0.25s ease-in;
-  animation: bounce 2s linear 5s normal infinite none running;
+  animation: colorChange 5s linear 5s normal infinite none running;
 }
 
 .edit-list-div button:hover {
@@ -290,7 +324,7 @@ p {
 /* Edit list item done button */
 .edit-listitem-div button {
   transition: color 0.25s ease-in;
-  animation: bounce 2s linear 5s normal infinite none running;
+  animation: colorChange 5s linear 5s normal infinite none running;
   text-align: left;
 }
 
@@ -302,26 +336,31 @@ p {
   outline: var(--font-class) auto 5px;
 }
 
-@keyframes bounce {
+@keyframes colorChange {
   0% {
-    transform: translateY(0);
+    color: var(--font-text-light);
+  }
+
+  45% {
+    color: var(--font-text-light);
   }
 
   50% {
-    transform: translateY(-10%);
+    color: var(--font-class);
   }
 
-  75% {
-    transform: translateY(0);
+  55% {
+    color: var(--font-text-light);
   }
 
   100% {
-    transform: translateY(0);
+    color: var(--font-text-light);
   }
 }
 
 .log-out-btn {
   opacity: 0.5;
+  padding: 0 5px;
 }
 
 .list-expand-btn {
@@ -343,40 +382,6 @@ p {
 
 .fade-enter-active {
   opacity: 1;
-}
-
-/* Input styles */
-
-input {
-  background-color: var(--background-dark);
-  box-shadow: inset 0px 0px 2px 0px var(--font-important);
-  border: 1px solid var(--background-light);
-  border-radius: 5px;
-  padding: 0 5px 0 5px;
-  color: var(--font-text-light);
-  margin-right: 0.25em;
-  font: inherit;
-  box-sizing: border-box;
-}
-
-/* Select styles */
-
-select {
-  background-color: var(--barkground-dark);
-  border: 1px solid var(--background-light);
-  border-radius: 5px;
-  padding: 5px 5px 5px 5px;
-  color: var(--font-text-light);
-}
-
-[value~="paid"] {
-  background-color: var(--background-dark);
-  color: var(--font-important);
-}
-
-[value~="free"] {
-  background-color: var(--background-dark);
-  color: var(--font-text-light);
 }
 
 /* App styles */
@@ -404,7 +409,7 @@ select {
 
 .header-section {
   width: 100vw;
-  padding: 0 25px;
+  padding: 0 5px;
   display: grid;
   align-items: center;
   grid-template-areas: "logo messages user";
@@ -516,7 +521,7 @@ select {
 }
 
 .sidebar-padding {
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
 .sidebar-mobile {
@@ -629,7 +634,6 @@ select {
 .list-item-box {
   background-color: var(--background-dark);
   grid-column: 2 / -1;
-  font-size: 0.9em;
 }
 
 .item-indent {
@@ -668,7 +672,7 @@ select {
 }
 
 .section-user.opened {
-  width: 100vw;
+  width: 110vw;
   opacity: 1;
   border-left: 1px solid var(--background-mid);
 }

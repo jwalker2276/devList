@@ -166,17 +166,13 @@ select {
 
 .edit-list-btn {
   grid-column: 2 / 3;
-  /* background-image: url("/images/cog.svg"); */
   background-color: var(--background-dark);
   border: none;
   border-bottom: 2px solid var(--font-class);
 }
 
 .edit-item-btn {
-  height: 30px;
-  width: 30px;
   margin: 0;
-  padding: 0;
   background-color: var(--background-dark);
   border: none;
   cursor: pointer;
@@ -197,7 +193,8 @@ select {
 }
 
 .edit-list-btn svg {
-  max-width: 30px;
+  max-width: 20px;
+  max-height: 20px;
 }
 
 .vote-btn {

@@ -2,7 +2,7 @@
 
 ## Link to project
 
-Coming Soon
+<https://www.devlistapp.com/>
 
 ## Description
 

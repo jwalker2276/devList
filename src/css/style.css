@@ -531,6 +531,12 @@ select {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 1024px) {
+  .section-sidebar {
+    min-width: 225px;
+  }
+}
+
 @media screen and (max-width: 850px) {
   .section-sidebar {
     overflow: hidden;
@@ -648,6 +654,12 @@ select {
   grid-template-columns: 140px 140px 30px 1fr;
   grid-template-rows: 30px;
   grid-gap: 5px;
+}
+
+@media screen and (max-width: 900px) {
+  .item-voter {
+    grid-template-columns: 110px 110px 30px 1fr;
+  }
 }
 
 /* User styles */

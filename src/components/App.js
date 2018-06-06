@@ -23,6 +23,7 @@ class App extends React.Component {
     editItemFlag: null,
     reportedItem: null,
     styleClass: "section-user",
+    styleClassMobile: "section-sidebar",
     windowSize: null
   };
 
@@ -359,12 +360,23 @@ class App extends React.Component {
     const userPanelClosed = "section-user";
     const userPanelOpened = "section-user opened";
 
+    const openSidebar = "section-sidebar opened";
+    const closeSidebar = "section-sidebar";
+
     if (command === "openUserPanel") {
       this.setState({ styleClass: userPanelOpened });
     }
 
     if (command === "closeUserPanel") {
       this.setState({ styleClass: userPanelClosed });
+    }
+
+    if (command === "openSidebar") {
+      this.setState({ styleClassMobile: openSidebar });
+    }
+
+    if (command === "closeSidebar") {
+      this.setState({ styleClassMobile: closeSidebar });
     }
 
     // Check to see if user want to see info
@@ -451,6 +463,7 @@ class App extends React.Component {
             loadSelectedList={this.loadSelectedList}
             addToViewCount={this.addToViewCount}
             windowSize={this.state.windowSize}
+            styleClassMobile={this.state.styleClassMobile}
           />
           <ListsSection
             selectedListName={this.state.user.selectedList}

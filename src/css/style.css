@@ -366,8 +366,8 @@ select {
 }
 
 .list-expand-btn {
-  width: 15%;
-  height: auto;
+  width: 30px;
+  height: 30px;
   background-color: var(--background-mid);
   border: none;
 }
@@ -403,7 +403,7 @@ select {
 
 @media screen and (max-width: 850px) {
   .app-main {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -458,11 +458,13 @@ select {
 @media screen and (max-width: 770px) {
   .header-section {
     font-size: 0.9em;
-    padding: 0 0;
+    padding: 5px 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "logo user";
   }
 
   .header-logo {
-    padding-left: 2px;
+    padding-left: 5px;
   }
 
   .header-messages {
@@ -529,6 +531,10 @@ select {
 .sidebar-mobile {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid var(--background-light);
 }
 
 @media screen and (max-width: 1024px) {
@@ -539,19 +545,24 @@ select {
 
 @media screen and (max-width: 850px) {
   .section-sidebar {
-    overflow: hidden;
-    order: 1;
+    width: 0;
     height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 44px;
+    left: 0;
+  }
+
+  .section-sidebar.opened {
+    width: 80%;
   }
 
   .sidebar-list-container {
-    height: 0;
+    height: 30px;
   }
 
   .sidebar-section-title.sidebar-padding {
-    padding-left: 2px;
-    height: 100%;
-    width: 100%;
+    border: none;
   }
 }
 
@@ -676,8 +687,7 @@ select {
 @media screen and (max-width: 850px) {
   .section-user {
     height: 0;
-    width: 100vw;
-    order: 2;
+    width: 0;
     transition: height 0.5s ease-in-out;
   }
   .section-user.opened {

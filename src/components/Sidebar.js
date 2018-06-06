@@ -28,20 +28,7 @@ class Sidebar extends React.Component {
 
     const sideBarTitle = mobile ? (
       <div className="sidebar-mobile">
-        <h5 className="sidebar-section-title sidebar-padding">
-          List Explorer Mobile
-        </h5>
-        <button
-          className="list-expand-btn"
-          // onClick={() => props.}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-            <path
-              className="list-btn"
-              d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
-            />
-          </svg>
-        </button>
+        <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
       </div>
     ) : (
       <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>

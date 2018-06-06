@@ -73,7 +73,13 @@ class Header extends React.Component {
               <span className="item-comment">{"/>"}</span>
             </h3>
           </div>
-          <div className="header-user-loggedin">
+          <div className="header-user">
+            <button
+              className="syntax-btn"
+              onClick={() => this.props.uiCommands("openSidebar")}
+            >
+              Lists
+            </button>
             <button
               className="syntax-btn"
               onClick={() => this.props.uiCommands("info")}

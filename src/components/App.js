@@ -464,6 +464,7 @@ class App extends React.Component {
             addToViewCount={this.addToViewCount}
             windowSize={this.state.windowSize}
             styleClassMobile={this.state.styleClassMobile}
+            uiCommands={this.uiCommands}
           />
           <ListsSection
             selectedListName={this.state.user.selectedList}

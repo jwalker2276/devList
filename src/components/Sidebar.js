@@ -29,13 +29,19 @@ class Sidebar extends React.Component {
     const sideBarTitle = mobile ? (
       <div className="sidebar-mobile">
         <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
+        <button
+          className="sidebar-close-btn"
+          onClick={() => this.props.uiCommands("closeSidebar")}
+        >
+          &#10799;
+        </button>
       </div>
     ) : (
       <h5 className="sidebar-section-title sidebar-padding">List Explorer</h5>
     );
 
     return (
-      <section className="section-sidebar">
+      <section className={this.props.styleClassMobile}>
         {sideBarTitle}
         <div className="sidebar-list-container">
           <p className="sidebar-list-title sidebar-padding">
@@ -51,6 +57,8 @@ class Sidebar extends React.Component {
               }
               loadSelectedList={this.props.loadSelectedList}
               addToViewCount={this.props.addToViewCount}
+              windowSize={this.props.windowSize}
+              uiCommands={this.props.uiCommands}
             />
           </div>
           <p className="sidebar-list-title sidebar-padding">
@@ -66,6 +74,8 @@ class Sidebar extends React.Component {
               }
               loadSelectedList={this.props.loadSelectedList}
               addToViewCount={this.props.addToViewCount}
+              windowSize={this.props.windowSize}
+              uiCommands={this.props.uiCommands}
             />
           </div>
           <p className="sidebar-list-title sidebar-padding">
@@ -80,6 +90,8 @@ class Sidebar extends React.Component {
                 listName={this.props.listsCategories.lists[key].title}
                 loadSelectedList={this.props.loadSelectedList}
                 addToViewCount={this.props.addToViewCount}
+                windowSize={this.props.windowSize}
+                uiCommands={this.props.uiCommands}
               />
             ))}
           </div>

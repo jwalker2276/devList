@@ -254,6 +254,7 @@ select {
   outline: none;
 }
 
+/* Sidebar button */
 .sidebar-list-button {
   padding: 5px 0 5px 15px;
   max-width: 90%;
@@ -535,6 +536,18 @@ select {
   height: 40px;
   width: 100%;
   border-bottom: 1px solid var(--background-light);
+  overflow: hidden;
+}
+
+.sidebar-close-btn {
+  background-color: var(--background-mid);
+  color: var(--font-text-light);
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 30px;
+  align-items: center;
 }
 
 @media screen and (max-width: 1024px) {
@@ -546,15 +559,19 @@ select {
 @media screen and (max-width: 850px) {
   .section-sidebar {
     width: 0;
+    min-width: 0;
     height: 100%;
     position: fixed;
     z-index: 1;
     top: 44px;
     left: 0;
+    transition: width 0.5s ease-in-out;
+    white-space: nowrap;
   }
 
   .section-sidebar.opened {
     width: 80%;
+    white-space: nowrap;
   }
 
   .sidebar-list-container {

@@ -7,6 +7,11 @@ class Sidebaritem extends React.Component {
   handleClick = () => {
     this.props.loadSelectedList(this.props.listKey);
     // this.props.addToViewCount(this.props.listKey);
+
+    // If on mobile close sidebar too.
+    if (this.props.windowSize === "mobile") {
+      this.props.uiCommands("closeSidebar");
+    }
   };
 
   render() {

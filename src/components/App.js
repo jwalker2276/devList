@@ -106,7 +106,6 @@ class App extends React.Component {
     //Get number of last list
     for (let i in lists) {
       var listNumber = i;
-      console.log("listnumber is :" + listNumber);
       //Just want the first obj
       break;
     }

@@ -35,6 +35,11 @@ class EditItem extends React.Component {
               name="name"
               value={selectedListItem.name}
               onChange={this.handleEvent}
+              required
+              minLength="1"
+              maxLength="25"
+              pattern="[A-Za-z ]{1,25}"
+              title="Letters and spaces only"
             />
             <span className="item-class">
               extends{" "}
@@ -58,9 +63,13 @@ class EditItem extends React.Component {
               <span className="item-equal"> = </span>
             </label>
             <input
-              type="text"
+              type="url"
               name="link"
+              title="A link with http:// or https://"
               value={selectedListItem.link}
+              minLength="1"
+              maxLength="50"
+              required
               onChange={this.handleEvent}
             />
             <span className="item-text">;</span>

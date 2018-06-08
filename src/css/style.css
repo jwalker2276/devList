@@ -66,6 +66,15 @@ input {
   box-sizing: border-box;
 }
 
+input:valid {
+  background-color: var(--background-dark);
+}
+
+input:invalid {
+  color: red;
+  text-decoration: line-through;
+}
+
 /* Select styles */
 
 select {
@@ -774,6 +783,14 @@ select {
 
 .add-list-form {
   margin: 0;
+}
+
+.list-name:invalid {
+  background-color: red;
+}
+
+.list-name:valid {
+  background-color: green;
 }
 
 .add-list-form span.add-list-end {

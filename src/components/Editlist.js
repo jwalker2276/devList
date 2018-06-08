@@ -24,6 +24,11 @@ class Editlist extends React.Component {
           <input
             type="text"
             name="name"
+            required
+            minLength="1"
+            maxLength="25"
+            pattern="[A-Za-z ]{1,25}"
+            title="Letters and spaces only"
             onChange={this.handleEvent}
             value={listName}
           />

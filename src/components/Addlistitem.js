@@ -62,6 +62,11 @@ class Addlistitem extends React.Component {
               ref={this.itemTitleRef}
               type="text"
               placeholder="Enter name here"
+              required
+              minLength="1"
+              maxLength="25"
+              pattern="[A-Za-z ]{1,25}"
+              title="Letters and spaces only"
             />
             <span className="item-class">
               extends{" "}
@@ -74,7 +79,7 @@ class Addlistitem extends React.Component {
           <div className="add-listitem-line-two item-indent">
             <label className="item-class">
               constructor{" "}
-              <span className="item-text"> (cost, link) &#123;</span>
+              <span className="item-text"> (link, cost) &#123;</span>
             </label>
           </div>
           {/* end of line two */}
@@ -87,8 +92,12 @@ class Addlistitem extends React.Component {
             <input
               name="item-link"
               ref={this.itemLinkRef}
-              type="text"
-              placeholder="www.website-link.com"
+              type="url"
+              minLength="1"
+              maxLength="50"
+              placeholder="https://www.website-link.com"
+              required
+              title="A link with http:// or https://"
             />
             <span className="item-text">;</span>
           </div>

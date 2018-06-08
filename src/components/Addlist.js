@@ -44,6 +44,11 @@ class Addlist extends React.Component {
               ref={this.titleRef}
               type="text"
               placeholder="Enter name here"
+              required
+              minLength="1"
+              maxLength="25"
+              pattern="[A-Za-z ]{1,25}"
+              title="Letters and spaces only"
             />
             <span className="item-text add-list-end">&#40;&#41;&#59;</span>
             <button className="syntax-btn" type="submit">

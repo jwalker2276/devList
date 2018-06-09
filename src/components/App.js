@@ -335,6 +335,8 @@ class App extends React.Component {
 
   //Update current users info from user component
   updateVotes = (command, syncedVotes) => {
+    const maxVotes = 3;
+
     // Copy current state
     const userInfo = { ...this.state.user };
 
@@ -347,7 +349,9 @@ class App extends React.Component {
     } else if (command === "reset") {
       userInfo.votes = this.state.initialVotes;
     } else if (command === "increase") {
-      userInfo.votes += 1;
+      if (userInfo.votes < maxVotes) {
+        userInfo.votes += 1;
+      }
     }
 
     // Update state

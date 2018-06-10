@@ -420,6 +420,7 @@ select {
 
 .header-section {
   width: 100vw;
+  height: 42px;
   padding: 0 5px;
   display: grid;
   align-items: center;

@@ -21,8 +21,9 @@ const Info = () => (
           <span className="item-title">Interact</span>
         </p>
         <p className="item-text">
-          But to interact with the list you have to log in either with Github or
-          Facebook.
+          To interact with the list you have to login either with Github or
+          Facebook. Currently, login is not supported on small screens, but
+          tablets and up will work.
         </p>
         <p className="item-text">
           To view a list just click the name of a list from the list explorer.
@@ -65,8 +66,8 @@ const Info = () => (
         </p>
         <p className="item-text">
           I will be watching the list, but if I miss something email me at
-          devlistapp@gmail.com
-        </p>.
+          devlistapp@gmail.com.
+        </p>
       </div>
     </div>
   </div>

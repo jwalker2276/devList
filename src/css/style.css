@@ -12,7 +12,6 @@
   /* List item colors */
   --item-border-left: #778da9;
   /* Background colors */
-  /* --background-light: #415a77; */
   --background-light: #0d1b2a;
   --background-mid: #1b263b;
   --background-dark: #0d1b2a;
@@ -68,11 +67,11 @@ input {
 
 input:valid {
   background-color: var(--background-dark);
+  color: var(--font-text-light);
 }
 
 input:invalid {
-  color: red;
-  text-decoration: line-through;
+  color: var(--font-important);
 }
 
 /* Select styles */
@@ -465,7 +464,7 @@ select {
   grid-gap: 5px;
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 850px) {
   .header-section {
     font-size: 0.9em;
     padding: 5px 0;
@@ -572,7 +571,7 @@ select {
     height: 100%;
     position: fixed;
     z-index: 1;
-    top: 44px;
+    top: 45px;
     left: 0;
     transition: width 0.5s ease-in-out;
     white-space: nowrap;
@@ -848,7 +847,7 @@ select {
   background-color: var(--background-mid);
   color: var(--font-text-light);
   font-size: 0.75em;
-  height: 35px;
+  min-height: 35px;
   overflow: hidden;
 }
 

@@ -154,6 +154,7 @@ select {
 }
 
 /* Login Buttons */
+
 .syntax-btn.user-login-btns {
   background-color: var(--background-mid);
   color: var(--font-text-light);
@@ -184,6 +185,7 @@ select {
   background-color: var(--background-dark);
   border: none;
   cursor: pointer;
+  grid-column: 3 / 3;
 }
 
 .cog {
@@ -263,6 +265,7 @@ select {
 }
 
 /* Sidebar button */
+
 .sidebar-list-button {
   padding: 5px 0 5px 15px;
   max-width: 90%;
@@ -289,6 +292,7 @@ select {
 }
 
 /* Add list button */
+
 .add-list-form button {
   transition: color 0.25s ease-in;
   animation: colorChange 5s linear 5s alternate infinite none running;
@@ -303,6 +307,7 @@ select {
 }
 
 /* Add to list button */
+
 .add-listitem-div button {
   transition: color 0.25s ease-in;
   animation: colorChange 5s linear 5s normal infinite none running;
@@ -319,6 +324,7 @@ select {
 }
 
 /* Edit list done button */
+
 .edit-list-div button {
   transition: color 0.25s ease-in;
   animation: colorChange 5s linear 5s normal infinite none running;
@@ -333,6 +339,7 @@ select {
 }
 
 /* Edit list item done button */
+
 .edit-listitem-div button {
   transition: color 0.25s ease-in;
   animation: colorChange 5s linear 5s normal infinite none running;
@@ -351,19 +358,15 @@ select {
   0% {
     color: var(--font-text-light);
   }
-
   45% {
     color: var(--font-text-light);
   }
-
   50% {
     color: var(--font-class);
   }
-
   55% {
     color: var(--font-text-light);
   }
-
   100% {
     color: var(--font-text-light);
   }
@@ -472,15 +475,12 @@ select {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "logo user";
   }
-
   .header-logo {
     padding-left: 5px;
   }
-
   .header-messages {
     font-size: 0.9em;
   }
-
   .header-user {
     padding-right: 2px;
     grid-gap: 0;
@@ -577,16 +577,13 @@ select {
     transition: width 0.5s ease-in-out;
     white-space: nowrap;
   }
-
   .section-sidebar.opened {
     width: 80%;
     white-space: nowrap;
   }
-
   .sidebar-list-container {
     height: 30px;
   }
-
   .sidebar-section-title.sidebar-padding {
     border: none;
   }
@@ -659,6 +656,7 @@ select {
 }
 
 /* Span for animations */
+
 .list-item-box span.fade {
   position: relative;
 }
@@ -777,6 +775,7 @@ select {
 }
 
 /* const */
+
 .add-list-div p.item-class {
   color: var(--font-class);
 }
